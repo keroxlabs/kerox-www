@@ -8,19 +8,19 @@ import Link from "next/link";
    ────────────────────────────────────────────────────────── */
 
 const NAV = [
-  { label: "KEROXOS",  href: "#keroxos" },
-  { label: "KRX",      href: "#krx" },
-  { label: "RESEARCH", href: "/research" },
-  { label: "FORUM",    href: "#den" },
-  { label: "GITHUB",   href: "https://github.com/keroxlabs" },
+  { label: "ORCHESTRATOR", href: "#orchestrator" },
+  { label: "SPEARHEAD",    href: "#spearhead" },
+  { label: "RESEARCH",     href: "/research" },
+  { label: "FORUM",        href: "#den" },
+  { label: "GITHUB",       href: "https://github.com/keroxlabs" },
 ];
 
 const CHAPTERS = [
-  { num: "I",   ttl: "A kernel, by hand",                          href: "#keroxos",   page: "P. 02" },
-  { num: "II",  ttl: "Packages that explain themselves",           href: "#krx",       page: "P. 04" },
-  { num: "III", ttl: "A public-interest security practice",        href: "#offensive", page: "P. 06" },
-  { num: "IV",  ttl: "The den — a forum, opening soon",            href: "#den",       page: "P. 08" },
-  { num: "V",   ttl: "The toolbox — Rust-native by hand",          href: "#tools",     page: "P. 10" },
+  { num: "I",   ttl: "An adversary, not a scanner",                  href: "#orchestrator", page: "P. 02" },
+  { num: "II",  ttl: "Spearhead — an LLM red team",                  href: "#spearhead",    page: "P. 04" },
+  { num: "III", ttl: "Discipline before the first packet",          href: "#discipline",   page: "P. 06" },
+  { num: "IV",  ttl: "The den — a forum, opening soon",             href: "#den",          page: "P. 08" },
+  { num: "V",   ttl: "The agents, run in a sealed lab",             href: "#tools",        page: "P. 10" },
 ];
 
 /* ────────────── NAV ────────────── */
@@ -74,26 +74,28 @@ function Hero() {
             className="reveal display text-[44px] sm:text-[60px] md:text-[72px] lg:text-[84px]"
             style={{ animationDelay: "120ms" }}
           >
-            Open systems,
+            An adversary,
             <br />
-            <span className="text-[var(--accent)]">given away</span>.
+            <span className="text-[var(--accent)]">under discipline</span>.
           </h1>
 
           <p
             className="reveal mt-7 max-w-[54ch] text-[14px] leading-[1.8] text-[var(--text)] sm:text-[15px]"
             style={{ animationDelay: "260ms" }}
           >
-            KeroxLabs is a small lab building a cybersecurity-focused,
-            Rust-native operating system — together with a custom set of
-            offensive tools, also written end-to-end in Rust. Everything is
-            open. Everything is by hand.
+            KeroxLabs is a small lab building Kerox — a Rust-native,
+            terminal-first, vendor-neutral autonomous red team. An orchestrator
+            reads an engagement plan and works an objective the way an adversary
+            would — recon, exploitation, privilege escalation, lateral movement,
+            C2 — not the way a scanner does. Every live action is dry-run by
+            default and gated behind a human. Built in the open, by hand.
           </p>
 
           <div
             className="reveal mt-8 flex flex-wrap items-center gap-4"
             style={{ animationDelay: "380ms" }}
           >
-            <a href="#keroxos" className="btn-primary">VIEW KEROXOS</a>
+            <a href="#orchestrator" className="btn-primary">HOW IT WORKS</a>
             <a href="https://github.com/keroxlabs" className="btn-ghost">
               GITHUB <span className="text-[var(--accent)]">↗</span>
             </a>
@@ -109,11 +111,11 @@ function Hero() {
             </div>
             <div>
               <div className="text-[var(--text-dimmer)]">FOCUS</div>
-              <div className="text-[var(--ink)]">CYBERSECURITY</div>
+              <div className="text-[var(--ink)]">OFFENSIVE AI</div>
             </div>
             <div>
-              <div className="text-[var(--text-dimmer)]">LICENSE</div>
-              <div className="text-[var(--accent)]">MIT · APACHE</div>
+              <div className="text-[var(--text-dimmer)]">STAGE</div>
+              <div className="text-[var(--accent)]">BUILDING</div>
             </div>
           </div>
         </div>
@@ -166,9 +168,9 @@ function Index() {
               In this <br /> issue.
             </h2>
             <p className="mt-6 max-w-[36ch] text-[13px] leading-[1.75] text-[var(--text-dim)]">
-              Five pieces — a kernel built for security, the package manager
-              that ships it, our disclosure practice, the workshop notes, and
-              the Rust offensive toolbox behind it all.
+              Five pieces — the orchestrator that runs an engagement, the
+              Spearhead LLM agent, the discipline that gates every action, the
+              forum we are opening, and the roster of agents behind it all.
             </p>
           </div>
 
@@ -257,7 +259,7 @@ function Chapter({
             <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 border-t border-dashed border-[var(--rule-bright)] pt-6 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
               <span>
                 STATUS{" "}
-                <span className={status === "COMING SOON" ? "text-[var(--accent-bright)]" : "text-[var(--ink)]"}>
+                <span className={status === "COMING SOON" || status === "BUILDING" ? "text-[var(--accent-bright)]" : "text-[var(--ink)]"}>
                   {status}
                 </span>
               </span>
@@ -275,16 +277,14 @@ function Chapter({
 
 /* ────────────── CARD VISUALS ────────────── */
 
-function BootDiagram() {
+function OrchestratorVisual() {
   const lines = [
-    { t: "0.000412", tag: "stage1", desc: "bios → long mode" },
-    { t: "0.001203", tag: "stage2", desc: "paging enabled" },
-    { t: "0.001845", tag: "kernel", desc: "no_std loaded" },
-    { t: "0.003445", tag: "mm",     desc: "buddy alloc" },
-    { t: "0.004012", tag: "sched",  desc: "round-robin" },
-    { t: "0.005601", tag: "net",    desc: "tcp/ip stack" },
-    { t: "0.006210", tag: "irq",    desc: "47 routed" },
-    { t: "0.007601", tag: "vfs",    desc: "mount /sys" },
+    { t: "recon",  tag: "T1595", desc: "active scan · surface mapped" },
+    { t: "access", tag: "T1190", desc: "public-facing app · entry" },
+    { t: "privesc",tag: "T1068", desc: "exploit · escalate to root" },
+    { t: "lateral",tag: "T1021", desc: "remote svc · pivot inward" },
+    { t: "collect",tag: "T1119", desc: "objective data located" },
+    { t: "c2",     tag: "T1071", desc: "app-layer channel · beacon" },
   ];
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden p-4 font-mono text-[10.5px] leading-[1.5] sm:p-5">
@@ -311,9 +311,9 @@ function BootDiagram() {
           <span className="block h-2 w-2 bg-[var(--accent)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
-          <span className="ml-3 text-[var(--text-dim)]">root@kerox · /sys</span>
+          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · /engagement</span>
         </div>
-        <span>tty0</span>
+        <span className="text-[var(--accent)]">DRY-RUN</span>
       </div>
 
       {/* banner */}
@@ -322,7 +322,7 @@ function BootDiagram() {
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         </div>
         <div className="my-1 flex items-baseline gap-2 text-[12px] font-bold tracking-[0.42em] text-[var(--accent-bright)]">
-          <span>░▓█ KEROXOS █▓░</span>
+          <span>░▓█ ORCHESTRATOR █▓░</span>
           <span className="text-[9px] font-normal tracking-[0.22em] text-[var(--text-dim)]">
             v0.0.1-α
           </span>
@@ -332,16 +332,16 @@ function BootDiagram() {
         </div>
       </div>
 
-      {/* boot log */}
+      {/* attack-chain plan */}
       <div className="relative space-y-[2px] text-[var(--text-dim)]">
         {lines.map((l) => (
           <div
             key={l.t}
-            className="grid grid-cols-[78px_46px_56px_1fr] items-baseline gap-2"
+            className="grid grid-cols-[64px_46px_56px_1fr] items-baseline gap-2"
           >
-            <span className="text-[var(--text-dimmer)]">[{l.t}]</span>
-            <span className="text-[var(--accent-bright)]">[ OK ]</span>
-            <span className="text-[var(--ink)]">{l.tag}</span>
+            <span className="text-[var(--ink)]">{l.t}</span>
+            <span className="text-[var(--accent-bright)]">{l.tag}</span>
+            <span className="text-[var(--text-dimmer)]">[plan]</span>
             <span className="text-[var(--text)]">·· {l.desc}</span>
           </div>
         ))}
@@ -349,14 +349,14 @@ function BootDiagram() {
 
       {/* status */}
       <div className="relative mt-3 text-[var(--ink)]">
-        <span className="text-[var(--accent)]">[ INFO ]</span> ring0 ready · audit-chain verified
+        <span className="text-[var(--accent)]">[ HOLD ]</span> live actions await human approval
       </div>
 
       {/* prompt */}
       <div className="relative mt-auto pt-3">
-        <span className="text-[var(--accent)]">root@kerox</span>
+        <span className="text-[var(--accent)]">krx@kerox</span>
         <span className="text-[var(--text-dim)]">:</span>
-        <span className="text-[var(--ink)]">/sys</span>
+        <span className="text-[var(--ink)]">/engagement</span>
         <span className="text-[var(--text-dim)]">$ </span>
         <span className="caret" />
       </div>
@@ -364,11 +364,12 @@ function BootDiagram() {
   );
 }
 
-function PackagesVisual() {
-  const pkgs = [
-    { name: "rkernel-net", ver: "0.4.2", hash: "a7f2…" },
-    { name: "kerox-alloc", ver: "0.1.0", hash: "9c01…" },
-    { name: "ring0-irq",   ver: "0.3.7", hash: "5be4…" },
+function SpearheadVisual() {
+  const probes = [
+    { name: "prompt injection",   ref: "LLM01", map: "AML.T0051" },
+    { name: "system-prompt leak", ref: "LLM07", map: "AML.T0054" },
+    { name: "guardrail bypass",   ref: "LLM02", map: "AML.T0054" },
+    { name: "tool-call exfil",    ref: "LLM06", map: "AML.T0057" },
   ];
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden p-4 font-mono text-[10.5px] leading-[1.5] sm:p-5">
@@ -394,9 +395,9 @@ function PackagesVisual() {
           <span className="block h-2 w-2 bg-[var(--accent)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
-          <span className="ml-3 text-[var(--text-dim)]">root@kerox · ~/sys</span>
+          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · ~/spearhead</span>
         </div>
-        <span>tty1</span>
+        <span className="text-[var(--accent)]">DRY-RUN</span>
       </div>
 
       {/* banner */}
@@ -405,9 +406,9 @@ function PackagesVisual() {
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         </div>
         <div className="my-1 flex items-baseline gap-2 text-[12px] font-bold tracking-[0.42em] text-[var(--accent-bright)]">
-          <span>░▓█ KRX █▓░</span>
+          <span>░▓█ SPEARHEAD █▓░</span>
           <span className="text-[9px] font-normal tracking-[0.22em] text-[var(--text-dim)]">
-            v0.2.0-dev
+            llm red-team
           </span>
         </div>
         <div className="text-[9px] leading-none tracking-[0]">
@@ -415,40 +416,27 @@ function PackagesVisual() {
         </div>
       </div>
 
-      {/* command + output */}
+      {/* command + planned probes */}
       <div className="relative space-y-[2px] text-[var(--text-dim)]">
         <div>
           <span className="text-[var(--accent)]">$</span>{" "}
-          <span className="text-[var(--ink)]">krx install rkernel-net</span>
+          <span className="text-[var(--ink)]">krx spearhead --target agent --plan</span>
         </div>
         <div className="pl-3">
-          <span>→ resolving manifest</span>{" "}
-          <span className="text-[var(--accent-bright)]">[ OK ]</span>
-        </div>
-        <div className="pl-3">→ fetching 12 crates · x86_64-none</div>
-        <div className="pl-3 text-[var(--accent)]">
-          [
-          <span className="text-[var(--accent-bright)]">████████████</span>
-          <span className="text-[var(--text-dimmer)]">░░░░</span>
-          ]{" "}
-          <span className="text-[var(--accent-bright)]">75%</span>{" "}
-          <span className="text-[var(--text-dim)]">3.4 MiB/s</span>
-        </div>
-        <div className="pl-3">
-          <span>→ verifying sha256</span>{" "}
+          <span>→ loading OWASP LLM Top 10 · MITRE ATLAS</span>{" "}
           <span className="text-[var(--accent-bright)]">[ OK ]</span>
         </div>
 
         <div className="mt-2 space-y-[2px]">
-          {pkgs.map((p) => (
+          {probes.map((p) => (
             <div
               key={p.name}
-              className="grid grid-cols-[18px_1fr_56px_44px] items-baseline gap-2"
+              className="grid grid-cols-[18px_1fr_46px_64px] items-baseline gap-2"
             >
-              <span className="text-[var(--accent)]">+</span>
+              <span className="text-[var(--accent)]">›</span>
               <span className="text-[var(--ink)]">{p.name}</span>
-              <span className="text-[var(--text)]">v{p.ver}</span>
-              <span className="text-[var(--text-dimmer)]">{p.hash}</span>
+              <span className="text-[var(--accent-bright)]">{p.ref}</span>
+              <span className="text-[var(--text-dimmer)]">{p.map}</span>
             </div>
           ))}
         </div>
@@ -456,14 +444,14 @@ function PackagesVisual() {
 
       {/* status */}
       <div className="relative mt-3 text-[var(--ink)]">
-        <span className="text-[var(--accent)]">[ INFO ]</span> 3 packages · signed · cached
+        <span className="text-[var(--accent)]">[ INFO ]</span> 4 probes mapped · queued for approval
       </div>
 
       {/* prompt */}
       <div className="relative mt-auto pt-3">
-        <span className="text-[var(--accent)]">root@kerox</span>
+        <span className="text-[var(--accent)]">krx@kerox</span>
         <span className="text-[var(--text-dim)]">:</span>
-        <span className="text-[var(--ink)]">~/sys</span>
+        <span className="text-[var(--ink)]">~/spearhead</span>
         <span className="text-[var(--text-dim)]">$ </span>
         <span className="caret" />
       </div>
@@ -471,12 +459,12 @@ function PackagesVisual() {
   );
 }
 
-function DisclosureVisual() {
-  const steps = [
-    { d: "DAY 00", t: "REPORT",  desc: "vendor + PGP",    done: true },
-    { d: "DAY 07", t: "ACK",     desc: "fix in progress", done: true },
-    { d: "DAY 45", t: "PATCH",   desc: "upstream landed", done: true },
-    { d: "DAY 90", t: "PUBLISH", desc: "write-up · CVE",  done: false },
+function EngagementVisual() {
+  const artifacts = [
+    { d: "01", t: "ROE",     desc: "rules of engagement",  done: true },
+    { d: "02", t: "CONOPS",  desc: "concept of operations", done: true },
+    { d: "03", t: "DECONF",  desc: "deconfliction plan",    done: true },
+    { d: "04", t: "OPPLAN",  desc: "ATT&CK-mapped",         done: false },
   ];
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden p-4 font-mono text-[10.5px] leading-[1.5] sm:p-5">
@@ -502,9 +490,9 @@ function DisclosureVisual() {
           <span className="block h-2 w-2 bg-[var(--accent)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
-          <span className="ml-3 text-[var(--text-dim)]">root@kerox · ~/labs</span>
+          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · ~/engagement</span>
         </div>
-        <span>tty2</span>
+        <span className="text-[var(--accent)]">PRE-FLIGHT</span>
       </div>
 
       {/* banner */}
@@ -513,9 +501,9 @@ function DisclosureVisual() {
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         </div>
         <div className="my-1 flex items-baseline gap-2 text-[12px] font-bold tracking-[0.42em] text-[var(--accent-bright)]">
-          <span>░▓█ DISCLOSURE █▓░</span>
+          <span>░▓█ ENGAGEMENT █▓░</span>
           <span className="text-[9px] font-normal tracking-[0.22em] text-[var(--text-dim)]">
-            90-day policy
+            package
           </span>
         </div>
         <div className="text-[9px] leading-none tracking-[0]">
@@ -527,14 +515,14 @@ function DisclosureVisual() {
       <div className="relative space-y-[2px] text-[var(--text-dim)]">
         <div>
           <span className="text-[var(--accent)]">$</span>{" "}
-          <span className="text-[var(--ink)]">kerox-disclose --track CVE-2026-04XX</span>
+          <span className="text-[var(--ink)]">krx plan --scope authorized.yaml</span>
         </div>
 
         <div className="mt-1 space-y-[2px]">
-          {steps.map((s) => (
+          {artifacts.map((s) => (
             <div
               key={s.d}
-              className="grid grid-cols-[64px_44px_60px_1fr] items-baseline gap-2"
+              className="grid grid-cols-[28px_44px_64px_1fr] items-baseline gap-2"
             >
               <span className="text-[var(--text-dimmer)]">{s.d}</span>
               <span className={s.done ? "text-[var(--accent-bright)]" : "text-[var(--text-dim)]"}>
@@ -547,20 +535,20 @@ function DisclosureVisual() {
         </div>
 
         <div className="mt-3 pl-3">
-          → pipeline · <span className="text-[var(--accent-bright)]">3 / 4</span> stages complete
+          → package · <span className="text-[var(--accent-bright)]">3 / 4</span> artifacts drafted
         </div>
       </div>
 
       {/* status */}
       <div className="relative mt-3 text-[var(--ink)]">
-        <span className="text-[var(--accent)]">[ INFO ]</span> public-interest research · no grey markets
+        <span className="text-[var(--accent)]">[ HOLD ]</span> authorized scope · dry-run · awaiting sign-off
       </div>
 
       {/* prompt */}
       <div className="relative mt-auto pt-3">
-        <span className="text-[var(--accent)]">root@kerox</span>
+        <span className="text-[var(--accent)]">krx@kerox</span>
         <span className="text-[var(--text-dim)]">:</span>
-        <span className="text-[var(--ink)]">~/labs</span>
+        <span className="text-[var(--ink)]">~/engagement</span>
         <span className="text-[var(--text-dim)]">$ </span>
         <span className="caret" />
       </div>
@@ -585,7 +573,7 @@ function PullQuote() {
               “
             </span>
             <blockquote className="display text-[34px] leading-[1.18] text-[var(--ink)] sm:text-[48px] md:text-[58px]">
-              The software that runs your machine should still belong to the people who use it.
+              An adversary with no rules teaches you nothing — the discipline is what turns an attack into an answer.
             </blockquote>
             <figcaption className="mt-10 flex items-center gap-4 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
               <span className="inline-block h-px w-10 bg-[var(--accent)]" />
@@ -602,10 +590,10 @@ function PullQuote() {
 
 function TheDen() {
   const mockThreads = [
-    { tag: "RFC",     title: "On freezing the syscall ABI before krx 1.0", who: "anonymous", posts: "—" },
-    { tag: "GENERAL", title: "Show your no_std debugging setup",            who: "anonymous", posts: "—" },
-    { tag: "REVIEW",  title: "Buddy vs. slab — when does each pay off?",    who: "anonymous", posts: "—" },
-    { tag: "TOOLS",   title: "What would a friendly molt feel like?",       who: "anonymous", posts: "—" },
+    { tag: "RFC",        title: "Writing a ConOps an agent can actually follow",   who: "anonymous", posts: "—" },
+    { tag: "ATLAS",      title: "Mapping a tool-call exfil chain to MITRE ATLAS",   who: "anonymous", posts: "—" },
+    { tag: "TRADECRAFT", title: "Keeping evil-winrm sessions alive across a pivot", who: "anonymous", posts: "—" },
+    { tag: "REVIEW",     title: "What does a clean deconfliction plan look like?",  who: "anonymous", posts: "—" },
   ];
   return (
     <section id="den" className="relative">
@@ -617,7 +605,7 @@ function TheDen() {
           <div>
             <div className="eyebrow"><span>CHAPTER FOUR · THE DEN</span></div>
             <h2 className="display mt-4 text-[40px] sm:text-[56px] md:text-[68px]">
-              A forum, for people who read kernel code.
+              A forum, for people who run real engagements.
             </h2>
           </div>
           <span className="hidden border border-dashed border-[var(--accent)] px-3 py-1.5 text-[9px] tracking-[0.34em] text-[var(--accent-bright)] lg:inline-block">
@@ -628,11 +616,11 @@ function TheDen() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <div>
             <p className="max-w-[44ch] text-[14.5px] leading-[1.85] text-[var(--text)]">
-              The Den is the slow, threaded forum we are building for
-              everyone working at the layer where things actually compile.
-              RFC pre-flight discussions, kernel reading groups, packet
-              postmortems, and the kind of long-form arguments about
-              allocators that nobody else wants to host.
+              The Den is the slow, threaded forum we are building for people who
+              do this for real — operators, red teamers, and the defenders on
+              the other side of them. Pre-flight RoE arguments, ATLAS mapping
+              threads, engagement postmortems, and the long debates about
+              offensive AI that nobody else wants to host.
             </p>
             <p className="mt-5 max-w-[44ch] text-[13px] leading-[1.8] text-[var(--text-dim)]">
               No articles. No engagement metrics. Just a room with the
@@ -711,33 +699,33 @@ function TheDen() {
   );
 }
 
-/* ────────────── TOOLBOX ────────────── */
+/* ────────────── AGENTS ────────────── */
 
 function Toolbox() {
-  const tools = [
+  const agents = [
     {
-      name: "viper",
-      tag: "KERNEL INTROSPECTION",
-      desc: "Ring-0 tracer and symbol walker — live structures, no debugger required.",
-      status: "COMING SOON",
+      name: "spearhead",
+      tag: "LLM / AI RED TEAM",
+      desc: "Prompt injection, system-prompt leakage, guardrail bypass, tool-call exfil — mapped to OWASP LLM Top 10 and MITRE ATLAS.",
+      status: "BUILDING",
     },
     {
-      name: "fang",
-      tag: "RAW PACKET CRAFTER",
-      desc: "Hand-built TCP/IP stack for crafting, replaying, and dissecting traffic.",
-      status: "COMING SOON",
+      name: "network",
+      tag: "RECON · NETWORK",
+      desc: "Maps the attack surface and works services and trust paths — recon, enumeration, and lateral movement on authorized scope.",
+      status: "PLANNED",
     },
     {
-      name: "molt",
-      tag: "LOADER · INJECTION",
-      desc: "Position-independent Rust loaders. Inline asm trampolines, zero CRT.",
-      status: "COMING SOON",
+      name: "report",
+      tag: "SYNTHESIS · REPORTING",
+      desc: "Turns the engagement into a deliverable — narrative plus findings, mapped to MITRE ATT&CK and ATLAS, as Markdown, JSON, or SARIF.",
+      status: "PLANNED",
     },
     {
-      name: "coil",
-      tag: "COVERAGE FUZZER",
-      desc: "no_std-friendly fuzzing harness. Snapshot-fuzzes kernel paths in QEMU.",
-      status: "COMING SOON",
+      name: "web",
+      tag: "WEB APPLICATIONS",
+      desc: "The web surface — injection, access-control, and logic flaws — once the wedge and recon are solid.",
+      status: "PLANNED",
     },
   ];
   return (
@@ -748,9 +736,9 @@ function Toolbox() {
             V.
           </div>
           <div>
-            <div className="eyebrow"><span>CHAPTER FIVE · THE TOOLBOX</span></div>
+            <div className="eyebrow"><span>CHAPTER FIVE · THE AGENTS</span></div>
             <h2 className="display mt-4 text-[40px] sm:text-[56px] md:text-[68px]">
-              Rust-native, built from the metal up.
+              Specialist agents, run in a sealed lab.
             </h2>
           </div>
         </div>
@@ -758,18 +746,23 @@ function Toolbox() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
           <div>
             <p className="max-w-[44ch] text-[14px] leading-[1.85] text-[var(--text)]">
-              A small set of offensive tools authored end-to-end in Rust — no C glue, no
-              borrowed runtimes, no off-the-shelf frameworks. Every primitive is small enough
-              to audit and slow enough to read.
+              The orchestrator does not do the work itself — it dispatches
+              specialists. Spearhead leads on the AI; the network agent takes the
+              conventional surface; the report agent turns the run into a
+              deliverable. Each one drives real, interactive tools — msfconsole,
+              sliver-client, evil-winrm — inside persistent terminal sessions,
+              answering prompts the way a person would instead of scripting
+              around them.
             </p>
             <p className="mt-5 max-w-[44ch] text-[12px] leading-[1.8] text-[var(--text-dim)]">
-              Released under permissive licenses for defenders, researchers, and red teams
-              operating in good faith.
+              Everything is designed to run in an isolated Kali sandbox on its
+              own operational network, walled off from the machine that drives
+              it. Offense stays in the box.
             </p>
           </div>
 
           <ul className="grid grid-cols-1 gap-px bg-[var(--rule)] sm:grid-cols-2">
-            {tools.map((t) => (
+            {agents.map((t) => (
               <li key={t.name} className="bg-[var(--bg)] px-7 py-8">
                 <div className="flex items-baseline justify-between">
                   <span className="display-roman text-[32px] text-[var(--ink)]">{t.name}</span>
@@ -807,8 +800,9 @@ function SignOff() {
               Write back.
             </h2>
             <p className="mt-7 max-w-[52ch] text-[14px] leading-[1.85] text-[var(--text)]">
-              KeroxLabs is open in the open. Patches, exploits, hard questions — bring them.
-              The bar is technical, the reply is fast, the door is unlocked.
+              KeroxLabs builds in the open. Patches, exploits, and hard questions
+              about doing offense responsibly — bring them. The bar is technical,
+              the reply is fast, the door is unlocked.
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
@@ -834,11 +828,11 @@ function Footer() {
       ],
     },
     {
-      heading: "SYSTEMS",
+      heading: "KEROX",
       items: [
-        { label: "KEROXOS", href: "#keroxos" },
-        { label: "KRX", href: "#krx" },
-        { label: "TOOLBOX", href: "#tools" },
+        { label: "ORCHESTRATOR", href: "#orchestrator" },
+        { label: "SPEARHEAD", href: "#spearhead" },
+        { label: "AGENTS", href: "#tools" },
       ],
     },
     {
@@ -894,7 +888,7 @@ function Footer() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-3 text-[10px] tracking-[0.3em] text-[var(--text-dimmer)] sm:flex-row sm:items-center">
           <span>© 2025 KEROXLABS · MIT · APACHE-2.0</span>
-          <span className="text-[var(--accent)]">SOFTWARE FOR THE PEOPLE WHO RUN IT</span>
+          <span className="text-[var(--accent)]">OFFENSE IN THE SERVICE OF DEFENSE</span>
         </div>
       </div>
     </footer>
@@ -916,65 +910,77 @@ export default function Home() {
         <div className="divider-dash" />
 
         <Chapter
-          id="keroxos"
+          id="orchestrator"
           num="I"
-          kicker="CHAPTER ONE · OPERATING SYSTEM"
-          title="A kernel, by hand."
+          kicker="CHAPTER ONE · THE ORCHESTRATOR"
+          title="An adversary, not a scanner."
           body={
             <>
-              KeroxOS is a cybersecurity-focused, Rust-native operating system written from the
-              bootloader up. no_std end to end — custom allocator, scheduler, hardened network
-              stack, and a small honest set of drivers. Built to be auditable: an OS you can read
-              in a weekend and trust on a Monday.
+              Kerox is not a scanner that runs nmap and prints a report. An
+              orchestrator reads an engagement plan, fixes on an objective, and
+              works toward it through whatever path actually opens up — chaining
+              reconnaissance, exploitation, privilege escalation, lateral
+              movement, and C2 the way a real operator would. When a door closes
+              it tries another. Findings are designed to feed a planned attack →
+              defend → verify loop, so every result is something a defender can
+              act on.
             </>
           }
-          status="COMING SOON"
-          seed="0x100000"
-          visual={<BootDiagram />}
-          href="/research#bootloader"
-          cta="READ THE KERNEL"
+          status="BUILDING"
+          seed="0x0FF5E7"
+          visual={<OrchestratorVisual />}
+          href="/research#orchestrator"
+          cta="SEE THE CHAIN"
         />
         <div className="divider-dash" />
 
         <Chapter
-          id="krx"
+          id="spearhead"
           num="II"
-          kicker="CHAPTER TWO · PACKAGE MANAGER"
-          title="Packages that explain themselves."
+          kicker="CHAPTER TWO · SPEARHEAD"
+          title="An LLM red team."
           body={
             <>
-              krx is the package manager for KeroxOS. Source builds, signed registry,
-              reproducible artifacts, and a manifest you can read out loud. krx install,
-              krx run, krx build — three verbs, no surprises.
+              Spearhead is the agent pointed at the AI in the stack. It probes
+              the things only a language model gets wrong — prompt injection,
+              system-prompt leakage, guardrail bypass, tool-call exfiltration —
+              and is designed to report every finding against the OWASP LLM Top
+              10 and MITRE ATLAS, so it lands in a framework defenders already
+              use. It leads; the network agent follows it onto the rest of the
+              attack surface, and the report agent turns the run into something a
+              defender can use.
             </>
           }
-          status="COMING SOON"
-          seed="0x2A0F"
-          visual={<PackagesVisual />}
+          status="BUILDING"
+          seed="0xA71A5"
+          visual={<SpearheadVisual />}
           reverse
-          href="/research#krx"
-          cta="TRY KRX"
+          href="/research#spearhead"
+          cta="MEET SPEARHEAD"
         />
         <div className="divider-dash" />
 
         <Chapter
-          id="offensive"
+          id="discipline"
           num="III"
-          kicker="CHAPTER THREE · SECURITY RESEARCH"
-          title="A public-interest practice."
+          kicker="CHAPTER THREE · ENGAGEMENT DISCIPLINE"
+          title="Discipline before the first packet."
           body={
             <>
-              A custom suite of offensive tools — kernel fuzzers, position-independent loaders,
-              raw packet crafters — authored end-to-end in Rust and used in our own research
-              under a strict 90-day disclosure policy. We hunt bugs, hand the fix upstream, and
-              publish the write-up. No offensive sales. No grey markets.
+              Before a packet leaves the wire, Kerox writes the engagement down —
+              Rules of Engagement, a ConOps, a Deconfliction Plan, and an OPPLAN
+              mapped to MITRE ATT&amp;CK — and then is built to refuse to step
+              outside it. Every live action is dry-run by default and waits on an
+              explicit human approval; nothing runs outside authorized scope. The
+              whole thing is meant to read like a real operation, paperwork and
+              safeties included — offense you could actually sign off on.
             </>
           }
-          status="COMING SOON"
-          seed="0xC2C2"
-          visual={<DisclosureVisual />}
-          href="/research#tools"
-          cta="READ DISCLOSURES"
+          status="BUILDING"
+          seed="0xC02FF1"
+          visual={<EngagementVisual />}
+          href="/research#discipline"
+          cta="READ THE RULES"
         />
         <div className="divider-dash" />
 

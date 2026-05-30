@@ -16,9 +16,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "KeroxLabs — An operating system, a package manager, and a little security research",
+  title: "KeroxLabs — Kerox, a Rust-native autonomous red team built in the open",
   description:
-    "A small hobby lab. Rust-native systems software, written slowly, given away. KeroxOS, krx, and open security research.",
+    "A small hobby lab building Kerox — a Rust-native, terminal-first multi-agent autonomous red team. Engagement-disciplined attack chains with an LLM red-team agent at the spearhead, every action dry-run and human-gated. In progress, in the open.",
   icons: { icon: "/logo.jpg" },
 };
 
