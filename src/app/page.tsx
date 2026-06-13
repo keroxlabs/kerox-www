@@ -762,11 +762,24 @@ function Arsenal() {
           ))}
         </ul>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
-          <span>150+ TOOLS · 14 PHASES · EVERY ONE RENAMED</span>
-          <Link href="/research#arsenal" className="row-arrow inline-flex items-center gap-3 text-[var(--ink)] transition-all hover:text-[var(--accent-bright)]">
-            FULL CATALOG <span className="text-[var(--accent)]">→</span>
-          </Link>
+        <div className="mt-8 flex flex-col gap-4">
+          {/* first shipped tool — links to its own project-site deployment */}
+          <a
+            href="/wordsmith/"
+            className="group inline-flex w-fit items-center gap-3 border border-[var(--rule-bright)] bg-[var(--bg-panel)] px-4 py-2.5 text-[10px] tracking-[0.3em] text-[var(--text-dim)] transition-all hover:border-[var(--accent)] hover:text-[var(--ink)]"
+          >
+            <span className="inline-block h-1.5 w-1.5 bg-[var(--accent)]" />
+            <span className="text-[var(--accent-bright)]">SHIPPING NOW</span>
+            <span className="text-[var(--text-dimmer)]">·</span>
+            <span>WORDSMITH — WORDLIST GENERATOR · L1</span>
+            <span className="text-[var(--accent)] transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
+            <span>150+ TOOLS · 14 PHASES · EVERY ONE RENAMED</span>
+            <Link href="/research#arsenal" className="row-arrow inline-flex items-center gap-3 text-[var(--ink)] transition-all hover:text-[var(--accent-bright)]">
+              FULL CATALOG <span className="text-[var(--accent)]">→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
