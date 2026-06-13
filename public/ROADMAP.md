@@ -45,14 +45,14 @@ These are load-bearing. Everything else follows from them.
   triple: `x86_64-linux-gnu`.
 - **Interface** — TTY-only. No X11, no Wayland, no display server, no GUI
   apps in the base. Everything runs in a console.
-- **Lineage** — off Android/ARM. KeroxOS moved off the ANDRAX
-  Android/ARM lineage; it is now an x86_64 console distro (think minimal
-  netinst / Arch-like base + `krx`), not an Android-on-phone overlay.
+- **Lineage** — off Android/ARM. KeroxOS is built as an x86_64 console
+  distro (think minimal netinst / Arch-like base + `krx`), not an
+  Android-on-phone overlay.
 
 What that costs, and what it doesn't:
 
-- The old ARM phone kernel (a Xiaomi Mi9 tree) is the wrong architecture
-  and is **dropped**; we build a mainline x86_64 kernel instead.
+- The old ARM phone kernel is the wrong architecture and is **dropped**;
+  we build a mainline x86_64 kernel instead.
 - GUI-only tools are dropped or run headless — ZAP as a daemon,
   mitmproxy in its console TUI, PE analysis via CLI rather than a Qt
   viewer.

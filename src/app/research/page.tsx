@@ -275,12 +275,12 @@ export default function ResearchPage() {
 
           <Chapter num="01" id="constraints" title="Design constraints" eta="Q1 2026">
             <P>
-              KeroxOS started life adjacent to the ANDRAX Android/ARM lineage.
-              The current design moves it off that lineage entirely: it is now an
-              x86_64 console Linux distribution — think a minimal netinst,
-              Arch-like base plus <Code>krx</Code> — not an Android-on-phone
-              overlay. The constraints below are load-bearing; everything else
-              follows from them.
+              KeroxOS is an x86_64 console Linux distribution — think a minimal
+              netinst, Arch-like base plus <Code>krx</Code> — not an
+              Android-on-phone overlay. Earlier sketches leaned on an Android/ARM
+              base; the current design leaves that behind entirely. The
+              constraints below are load-bearing; everything else follows from
+              them.
             </P>
             <H3>The hard constraints</H3>
             <UL>
@@ -290,7 +290,7 @@ export default function ResearchPage() {
             </UL>
             <H3>What that costs, and what it doesn&apos;t</H3>
             <UL>
-              <LI>The old ARM phone kernel (a Xiaomi Mi9 tree) is the wrong architecture and is <b>dropped</b>; we build a mainline x86_64 kernel instead (see ch. 03).</LI>
+              <LI>The old ARM phone kernel is the wrong architecture and is <b>dropped</b>; we build a mainline x86_64 kernel instead (see ch. 03).</LI>
               <LI>GUI-only tools are dropped or run headless — ZAP as a daemon, mitmproxy in its console TUI, PE analysis via CLI rather than a Qt viewer.</LI>
               <LI>Mobile <i>analysis</i> tools stay. They run fine on x86_64 — they analyze mobile apps, they don&apos;t need to <i>be</i> on a phone.</LI>
               <LI>Hardware tools (wireless, RF, smartcard, CAN) still need their physical adapters on the x86_64 host. That is unchanged.</LI>
