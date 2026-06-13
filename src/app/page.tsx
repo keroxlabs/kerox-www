@@ -2,25 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 /* ──────────────────────────────────────────────────────────
-   KeroxLabs — Issue 03 · the journal of a small systems lab
-   ONE typographic rule: serif italic for display, mono for
-   everything else. Never mixed inside a phrase.
+   KeroxLabs — Issue 04 · the journal of a small systems lab
+   KeroxOS — a TTY-only, x86_64 console Linux distro for
+   offensive operators. ONE typographic rule: serif italic for
+   display, mono for everything else. Never mixed inside a phrase.
    ────────────────────────────────────────────────────────── */
 
 const NAV = [
-  { label: "ORCHESTRATOR", href: "#orchestrator" },
-  { label: "SPEARHEAD",    href: "#spearhead" },
-  { label: "RESEARCH",     href: "/research" },
-  { label: "FORUM",        href: "#den" },
-  { label: "GITHUB",       href: "https://github.com/keroxlabs" },
+  { label: "SYSTEM",    href: "#system" },
+  { label: "ARSENAL",   href: "#arsenal" },
+  { label: "SPEARHEAD", href: "#spearhead" },
+  { label: "RESEARCH",  href: "/research" },
+  { label: "FORUM",     href: "#den" },
+  { label: "GITHUB",    href: "https://github.com/keroxlabs" },
 ];
 
 const CHAPTERS = [
-  { num: "I",   ttl: "An adversary, not a scanner",                  href: "#orchestrator", page: "P. 02" },
-  { num: "II",  ttl: "Spearhead — an LLM red team",                  href: "#spearhead",    page: "P. 04" },
-  { num: "III", ttl: "Discipline before the first packet",          href: "#discipline",   page: "P. 06" },
-  { num: "IV",  ttl: "The den — a forum, opening soon",             href: "#den",          page: "P. 08" },
-  { num: "V",   ttl: "The agents, run in a sealed lab",             href: "#tools",        page: "P. 10" },
+  { num: "I",   ttl: "A console that comes loaded",        href: "#system",     page: "P. 02" },
+  { num: "II",  ttl: "The arsenal — 150+ tools, renamed",  href: "#arsenal",    page: "P. 04" },
+  { num: "III", ttl: "Spearhead — pointed at the AI",      href: "#spearhead",  page: "P. 06" },
+  { num: "IV",  ttl: "Discipline before the first packet", href: "#discipline", page: "P. 08" },
+  { num: "V",   ttl: "The den — a forum, opening soon",    href: "#den",        page: "P. 10" },
 ];
 
 /* ────────────── NAV ────────────── */
@@ -67,35 +69,36 @@ function Hero() {
         {/* LEFT — headline */}
         <div className="flex flex-col">
           <div className="reveal eyebrow mb-7" style={{ animationDelay: "60ms" }}>
-            <span>FROM THE WORKSHOP</span>
+            <span>FROM THE WORKSHOP · A SECURITY OS</span>
           </div>
 
           <h1
             className="reveal display text-[44px] sm:text-[60px] md:text-[72px] lg:text-[84px]"
             style={{ animationDelay: "120ms" }}
           >
-            An adversary,
+            It boots to a prompt —
             <br />
-            <span className="text-[var(--accent)]">under discipline</span>.
+            <span className="text-[var(--accent)]">and comes loaded</span>.
           </h1>
 
           <p
-            className="reveal mt-7 max-w-[54ch] text-[14px] leading-[1.8] text-[var(--text)] sm:text-[15px]"
+            className="reveal mt-7 max-w-[56ch] text-[14px] leading-[1.8] text-[var(--text)] sm:text-[15px]"
             style={{ animationDelay: "260ms" }}
           >
-            KeroxLabs is a small lab building Kerox — a Rust-native,
-            terminal-first, vendor-neutral autonomous red team. An orchestrator
-            reads an engagement plan and works an objective the way an adversary
-            would — recon, exploitation, privilege escalation, lateral movement,
-            C2 — not the way a scanner does. Every live action is dry-run by
-            default and gated behind a human. Built in the open, by hand.
+            KeroxOS is a TTY-only, x86_64 console Linux distribution for
+            offensive operators. No display server, no desktop — it boots
+            straight to a prompt and ships a curated arsenal of red-team tools,
+            a package manager (<span className="text-[var(--accent-bright)]">krx</span>)
+            that builds them from source, a kernel tuned for the work, and an
+            autonomous agent pointed at the AI surface. Built in the open, by
+            hand.
           </p>
 
           <div
             className="reveal mt-8 flex flex-wrap items-center gap-4"
             style={{ animationDelay: "380ms" }}
           >
-            <a href="#orchestrator" className="btn-primary">HOW IT WORKS</a>
+            <a href="#system" className="btn-primary">WHAT IT IS</a>
             <a href="https://github.com/keroxlabs" className="btn-ghost">
               GITHUB <span className="text-[var(--accent)]">↗</span>
             </a>
@@ -106,12 +109,12 @@ function Hero() {
             style={{ animationDelay: "480ms" }}
           >
             <div>
-              <div className="text-[var(--text-dimmer)]">SINCE</div>
-              <div className="text-[var(--ink)]">JAN 2026</div>
+              <div className="text-[var(--text-dimmer)]">INTERFACE</div>
+              <div className="text-[var(--ink)]">TTY-ONLY</div>
             </div>
             <div>
-              <div className="text-[var(--text-dimmer)]">FOCUS</div>
-              <div className="text-[var(--ink)]">OFFENSIVE AI</div>
+              <div className="text-[var(--text-dimmer)]">ARCH</div>
+              <div className="text-[var(--ink)]">x86_64</div>
             </div>
             <div>
               <div className="text-[var(--text-dimmer)]">STAGE</div>
@@ -168,9 +171,9 @@ function Index() {
               In this <br /> issue.
             </h2>
             <p className="mt-6 max-w-[36ch] text-[13px] leading-[1.75] text-[var(--text-dim)]">
-              Five pieces — the orchestrator that runs an engagement, the
-              Spearhead LLM agent, the discipline that gates every action, the
-              forum we are opening, and the roster of agents behind it all.
+              Five pieces — the system that boots to a console, the arsenal it
+              ships, the Spearhead agent pointed at the AI, the discipline that
+              gates the automation, and the forum we are opening.
             </p>
           </div>
 
@@ -277,14 +280,14 @@ function Chapter({
 
 /* ────────────── CARD VISUALS ────────────── */
 
-function OrchestratorVisual() {
-  const lines = [
-    { t: "recon",  tag: "T1595", desc: "active scan · surface mapped" },
-    { t: "access", tag: "T1190", desc: "public-facing app · entry" },
-    { t: "privesc",tag: "T1068", desc: "exploit · escalate to root" },
-    { t: "lateral",tag: "T1021", desc: "remote svc · pivot inward" },
-    { t: "collect",tag: "T1119", desc: "objective data located" },
-    { t: "c2",     tag: "T1071", desc: "app-layer channel · beacon" },
+function SystemVisual() {
+  const facts = [
+    { k: "os",        v: "KeroxOS · rolling" },
+    { k: "kernel",    v: "6.x-kerox · x86_64" },
+    { k: "interface", v: "console / tty · no X11" },
+    { k: "base",      v: "minimal netinst · Arch-like" },
+    { k: "packages",  v: "krx · built from source" },
+    { k: "arsenal",   v: "150+ tools · 14 phases" },
   ];
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden p-4 font-mono text-[10.5px] leading-[1.5] sm:p-5">
@@ -311,9 +314,9 @@ function OrchestratorVisual() {
           <span className="block h-2 w-2 bg-[var(--accent)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
           <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
-          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · /engagement</span>
+          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · tty1</span>
         </div>
-        <span className="text-[var(--accent)]">DRY-RUN</span>
+        <span className="text-[var(--accent)]">CONSOLE</span>
       </div>
 
       {/* banner */}
@@ -322,9 +325,9 @@ function OrchestratorVisual() {
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         </div>
         <div className="my-1 flex items-baseline gap-2 text-[12px] font-bold tracking-[0.42em] text-[var(--accent-bright)]">
-          <span>░▓█ ORCHESTRATOR █▓░</span>
+          <span>░▓█ KEROX OS █▓░</span>
           <span className="text-[9px] font-normal tracking-[0.22em] text-[var(--text-dim)]">
-            v0.0.1-α
+            x86_64
           </span>
         </div>
         <div className="text-[9px] leading-none tracking-[0]">
@@ -332,31 +335,132 @@ function OrchestratorVisual() {
         </div>
       </div>
 
-      {/* attack-chain plan */}
+      {/* neofetch-style readout */}
       <div className="relative space-y-[2px] text-[var(--text-dim)]">
-        {lines.map((l) => (
-          <div
-            key={l.t}
-            className="grid grid-cols-[64px_46px_56px_1fr] items-baseline gap-2"
-          >
-            <span className="text-[var(--ink)]">{l.t}</span>
-            <span className="text-[var(--accent-bright)]">{l.tag}</span>
-            <span className="text-[var(--text-dimmer)]">[plan]</span>
-            <span className="text-[var(--text)]">·· {l.desc}</span>
-          </div>
-        ))}
+        <div>
+          <span className="text-[var(--accent)]">$</span>{" "}
+          <span className="text-[var(--ink)]">krx fetch</span>
+        </div>
+        <div className="mt-1 space-y-[2px]">
+          {facts.map((f) => (
+            <div
+              key={f.k}
+              className="grid grid-cols-[78px_1fr] items-baseline gap-2"
+            >
+              <span className="text-[var(--accent-bright)]">{f.k}</span>
+              <span className="text-[var(--text)]">·· {f.v}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* status */}
       <div className="relative mt-3 text-[var(--ink)]">
-        <span className="text-[var(--accent)]">[ HOLD ]</span> live actions await human approval
+        <span className="text-[var(--accent)]">[ TTY ]</span> no display server · everything in the console
       </div>
 
       {/* prompt */}
       <div className="relative mt-auto pt-3">
         <span className="text-[var(--accent)]">krx@kerox</span>
         <span className="text-[var(--text-dim)]">:</span>
-        <span className="text-[var(--ink)]">/engagement</span>
+        <span className="text-[var(--ink)]">~</span>
+        <span className="text-[var(--text-dim)]">$ </span>
+        <span className="caret" />
+      </div>
+    </div>
+  );
+}
+
+function ArsenalVisual() {
+  const installs = [
+    { name: "cartograph", from: "nmap",    lvl: "L5" },
+    { name: "sweep",      from: "masscan", lvl: "L5" },
+    { name: "warhead",    from: "metasploit", lvl: "L9" },
+  ];
+  return (
+    <div className="absolute inset-0 flex flex-col overflow-hidden p-4 font-mono text-[10.5px] leading-[1.5] sm:p-5">
+      {/* CRT scanlines */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(255,255,255,0.025) 2px, rgba(255,255,255,0.025) 3px)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 30%, rgba(204,0,0,0.07), transparent 65%)",
+        }}
+      />
+
+      {/* terminal chrome */}
+      <div className="relative flex items-center justify-between border-b border-dashed border-[var(--rule-bright)] pb-2 text-[9px] tracking-[0.26em] text-[var(--text-dimmer)]">
+        <div className="flex items-center gap-1.5">
+          <span className="block h-2 w-2 bg-[var(--accent)]" />
+          <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
+          <span className="block h-2 w-2 bg-[var(--text-dimmer)]" />
+          <span className="ml-3 text-[var(--text-dim)]">krx@kerox · ~</span>
+        </div>
+        <span className="text-[var(--accent)]">PKG MGR</span>
+      </div>
+
+      {/* banner */}
+      <div className="relative mt-3 mb-2 text-[var(--accent)]">
+        <div className="text-[9px] leading-none tracking-[0]">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        </div>
+        <div className="my-1 flex items-baseline gap-2 text-[12px] font-bold tracking-[0.42em] text-[var(--accent-bright)]">
+          <span>░▓█ KRX █▓░</span>
+          <span className="text-[9px] font-normal tracking-[0.22em] text-[var(--text-dim)]">
+            package manager
+          </span>
+        </div>
+        <div className="text-[9px] leading-none tracking-[0]">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        </div>
+      </div>
+
+      {/* command + output */}
+      <div className="relative space-y-[2px] text-[var(--text-dim)]">
+        <div>
+          <span className="text-[var(--accent)]">$</span>{" "}
+          <span className="text-[var(--ink)]">krx install cartograph sweep warhead</span>
+        </div>
+        <div className="pl-3">
+          <span>→ resolving codenames · upstream unchanged</span>{" "}
+          <span className="text-[var(--accent-bright)]">[ OK ]</span>
+        </div>
+
+        <div className="mt-2 space-y-[2px]">
+          {installs.map((p) => (
+            <div
+              key={p.name}
+              className="grid grid-cols-[84px_18px_64px_40px] items-baseline gap-2"
+            >
+              <span className="text-[var(--ink)]">{p.name}</span>
+              <span className="text-[var(--accent)]">←</span>
+              <span className="text-[var(--text)]">{p.from}</span>
+              <span className="text-[var(--accent-bright)]">{p.lvl}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 pl-3">
+          → built from source · <span className="text-[var(--accent-bright)]">3 / 3</span> installed
+        </div>
+      </div>
+
+      {/* status */}
+      <div className="relative mt-3 text-[var(--ink)]">
+        <span className="text-[var(--accent)]">[ INFO ]</span> 150+ tools · every one renamed
+      </div>
+
+      {/* prompt */}
+      <div className="relative mt-auto pt-3">
+        <span className="text-[var(--accent)]">krx@kerox</span>
+        <span className="text-[var(--text-dim)]">:</span>
+        <span className="text-[var(--ink)]">~</span>
         <span className="text-[var(--text-dim)]">$ </span>
         <span className="caret" />
       </div>
@@ -423,7 +527,7 @@ function SpearheadVisual() {
           <span className="text-[var(--ink)]">krx spearhead --target agent --plan</span>
         </div>
         <div className="pl-3">
-          <span>→ loading OWASP LLM Top 10 · MITRE ATLAS</span>{" "}
+          <span>→ mindprobe · pyrit · OWASP LLM · ATLAS</span>{" "}
           <span className="text-[var(--accent-bright)]">[ OK ]</span>
         </div>
 
@@ -556,6 +660,119 @@ function EngagementVisual() {
   );
 }
 
+/* ────────────── THE ARSENAL — catalog grid ────────────── */
+
+function Arsenal() {
+  const phases = [
+    {
+      name: "recon",
+      tag: "RECON · OSINT",
+      tools: "Ghostname · Weaver · Beacon",
+      desc: "Username OSINT across social media, automated threat-intel mapping, and exposed-host discovery via Shodan.",
+      lvl: "L1–L4",
+    },
+    {
+      name: "web",
+      tag: "WEB APPLICATIONS",
+      tools: "Pathfinder · Injector · Crossfire",
+      desc: "Path and parameter discovery, automatic SQL-injection takeover, and an advanced XSS suite — the whole web surface.",
+      lvl: "L2 · L6",
+    },
+    {
+      name: "network",
+      tag: "NETWORK · DNS",
+      tools: "Cartograph · Sweep · Floodns",
+      desc: "Advanced mapping, mass IP/port scanning, and a high-performance DNS resolver for the conventional surface.",
+      lvl: "L3 · L5",
+    },
+    {
+      name: "cracking",
+      tag: "PASSWORD ATTACKS",
+      tools: "Hashreaper · Ripper · Manyfang",
+      desc: "GPU-accelerated cracking, John the Ripper jumbo, and a parallel network login brute-forcer.",
+      lvl: "L7",
+    },
+    {
+      name: "c2 · ad",
+      tag: "EXPLOITATION · C2 · AD",
+      tools: "Warhead · Overlord · Bloodtrail",
+      desc: "A full exploitation framework, network-wide execution and lateral movement, and Active Directory ACL paths.",
+      lvl: "L9",
+    },
+    {
+      name: "wireless",
+      tag: "WIRELESS · RF · BLE",
+      tools: "Airbane · Bluefang · Swiftknife",
+      desc: "WiFi auditing, a BLE swiss-army knife, and an 802.11 / BLE / Ethernet recon core — physical adapters required.",
+      lvl: "L11",
+    },
+    {
+      name: "reversing",
+      tag: "RE · BINARY · FUZZ",
+      tools: "Dissect · Fuzzstorm · Firmwalk",
+      desc: "A UNIX-like reversing framework, AFL++ fuzzing, and firmware carving — all driven from the console.",
+      lvl: "L12",
+    },
+    {
+      name: "ai · llm",
+      tag: "AI / LLM SECURITY",
+      tools: "Mindprobe · Redmind · Inquisitor",
+      desc: "LLM vulnerability scanning, a red-team framework mapped to OWASP/NIST, and PyRIT risk-identification automation.",
+      lvl: "AI TRACK",
+    },
+  ];
+  return (
+    <section className="relative">
+      <div className="mx-auto max-w-[1280px] px-6 pb-28 sm:px-10 sm:pb-36">
+        <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+          <div>
+            <div className="eyebrow"><span>THE CATALOG</span></div>
+            <h3 className="display mt-4 text-[32px] leading-[1.05] sm:text-[42px]">
+              Eight of fourteen <br /> phases.
+            </h3>
+          </div>
+          <p className="max-w-[58ch] self-end text-[13px] leading-[1.8] text-[var(--text-dim)]">
+            Every tool in KeroxOS is real and upstream — and renamed. The clone
+            URLs still point at the original repos, so you can read the source
+            you are building. Ordered by learning curve, from warm-up utilities
+            to the steepest binary work. A sample below; the full catalog lives
+            in the research book.
+          </p>
+        </div>
+
+        <ul className="grid grid-cols-1 gap-px bg-[var(--rule)] sm:grid-cols-2 lg:grid-cols-4">
+          {phases.map((p) => (
+            <li key={p.name} className="bg-[var(--bg)] px-6 py-7">
+              <div className="flex items-baseline justify-between">
+                <span className="display-roman text-[26px] text-[var(--ink)]">{p.name}</span>
+                <span className="text-[9px] tracking-[0.3em] text-[var(--accent)]">
+                  {p.lvl}
+                </span>
+              </div>
+              <div className="mt-2 text-[10px] tracking-[0.26em] text-[var(--text-dim)] uppercase">
+                {p.tag}
+              </div>
+              <div className="mt-3 font-mono text-[11px] leading-[1.5] text-[var(--accent-bright)]">
+                {p.tools}
+              </div>
+              <p className="mt-3 text-[12px] leading-[1.7] text-[var(--text)]">
+                {p.desc}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
+          <span>150+ TOOLS · 14 PHASES · EVERY ONE RENAMED</span>
+          <Link href="/research#arsenal" className="row-arrow inline-flex items-center gap-3 text-[var(--ink)] transition-all hover:text-[var(--accent-bright)]">
+            FULL CATALOG <span className="text-[var(--accent)]">→</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ────────────── PULL QUOTE (mission) ────────────── */
 
 function PullQuote() {
@@ -565,7 +782,7 @@ function PullQuote() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_3fr] lg:gap-16">
           <div>
             <div className="eyebrow"><span>EDITOR&apos;S LETTER</span></div>
-            <div className="marginalia mt-4">// a short note</div>
+            <div className="marginalia mt-4">{"// a short note"}</div>
           </div>
 
           <figure className="relative">
@@ -573,11 +790,11 @@ function PullQuote() {
               “
             </span>
             <blockquote className="display text-[34px] leading-[1.18] text-[var(--ink)] sm:text-[48px] md:text-[58px]">
-              An adversary with no rules teaches you nothing — the discipline is what turns an attack into an answer.
+              A loaded console is just a liability without the discipline to point it.
             </blockquote>
             <figcaption className="mt-10 flex items-center gap-4 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
               <span className="inline-block h-px w-10 bg-[var(--accent)]" />
-              <span>KEROXLABS · MAY 2026</span>
+              <span>KEROXLABS · JUN 2026</span>
             </figcaption>
           </figure>
         </div>
@@ -590,9 +807,9 @@ function PullQuote() {
 
 function TheDen() {
   const mockThreads = [
-    { tag: "RFC",        title: "Writing a ConOps an agent can actually follow",   who: "anonymous", posts: "—" },
-    { tag: "ATLAS",      title: "Mapping a tool-call exfil chain to MITRE ATLAS",   who: "anonymous", posts: "—" },
-    { tag: "TRADECRAFT", title: "Keeping evil-winrm sessions alive across a pivot", who: "anonymous", posts: "—" },
+    { tag: "BUILD",      title: "Getting Cartograph to compile against the kerox kernel", who: "anonymous", posts: "—" },
+    { tag: "TTY",        title: "Driving Zephyr (ZAP) headless — no Java GUI, just the API", who: "anonymous", posts: "—" },
+    { tag: "ATLAS",      title: "Mapping a Mindprobe finding to MITRE ATLAS",      who: "anonymous", posts: "—" },
     { tag: "REVIEW",     title: "What does a clean deconfliction plan look like?",  who: "anonymous", posts: "—" },
   ];
   return (
@@ -600,10 +817,10 @@ function TheDen() {
       <div className="mx-auto max-w-[1280px] px-6 py-28 sm:px-10 sm:py-36">
         <div className="mb-14 grid grid-cols-1 gap-6 lg:grid-cols-[120px_1fr_auto] lg:items-end lg:gap-12">
           <div className="display text-[64px] leading-none text-[var(--accent)] sm:text-[80px]">
-            IV.
+            V.
           </div>
           <div>
-            <div className="eyebrow"><span>CHAPTER FOUR · THE DEN</span></div>
+            <div className="eyebrow"><span>CHAPTER FIVE · THE DEN</span></div>
             <h2 className="display mt-4 text-[40px] sm:text-[56px] md:text-[68px]">
               A forum, for people who run real engagements.
             </h2>
@@ -617,8 +834,8 @@ function TheDen() {
           <div>
             <p className="max-w-[44ch] text-[14.5px] leading-[1.85] text-[var(--text)]">
               The Den is the slow, threaded forum we are building for people who
-              do this for real — operators, red teamers, and the defenders on
-              the other side of them. Pre-flight RoE arguments, ATLAS mapping
+              run KeroxOS for real — operators, red teamers, and the defenders on
+              the other side of them. Build notes, TTY tradecraft, ATLAS mapping
               threads, engagement postmortems, and the long debates about
               offensive AI that nobody else wants to host.
             </p>
@@ -699,92 +916,6 @@ function TheDen() {
   );
 }
 
-/* ────────────── AGENTS ────────────── */
-
-function Toolbox() {
-  const agents = [
-    {
-      name: "spearhead",
-      tag: "LLM / AI RED TEAM",
-      desc: "Prompt injection, system-prompt leakage, guardrail bypass, tool-call exfil — mapped to OWASP LLM Top 10 and MITRE ATLAS.",
-      status: "BUILDING",
-    },
-    {
-      name: "network",
-      tag: "RECON · NETWORK",
-      desc: "Maps the attack surface and works services and trust paths — recon, enumeration, and lateral movement on authorized scope.",
-      status: "PLANNED",
-    },
-    {
-      name: "report",
-      tag: "SYNTHESIS · REPORTING",
-      desc: "Turns the engagement into a deliverable — narrative plus findings, mapped to MITRE ATT&CK and ATLAS, as Markdown, JSON, or SARIF.",
-      status: "PLANNED",
-    },
-    {
-      name: "web",
-      tag: "WEB APPLICATIONS",
-      desc: "The web surface — injection, access-control, and logic flaws — once the wedge and recon are solid.",
-      status: "PLANNED",
-    },
-  ];
-  return (
-    <section id="tools" className="relative">
-      <div className="mx-auto max-w-[1280px] px-6 py-28 sm:px-10 sm:py-36">
-        <div className="mb-14 grid grid-cols-1 gap-6 lg:grid-cols-[120px_1fr_auto] lg:items-end lg:gap-12">
-          <div className="display text-[64px] leading-none text-[var(--accent)] sm:text-[80px]">
-            V.
-          </div>
-          <div>
-            <div className="eyebrow"><span>CHAPTER FIVE · THE AGENTS</span></div>
-            <h2 className="display mt-4 text-[40px] sm:text-[56px] md:text-[68px]">
-              Specialist agents, run in a sealed lab.
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
-          <div>
-            <p className="max-w-[44ch] text-[14px] leading-[1.85] text-[var(--text)]">
-              The orchestrator does not do the work itself — it dispatches
-              specialists. Spearhead leads on the AI; the network agent takes the
-              conventional surface; the report agent turns the run into a
-              deliverable. Each one drives real, interactive tools — msfconsole,
-              sliver-client, evil-winrm — inside persistent terminal sessions,
-              answering prompts the way a person would instead of scripting
-              around them.
-            </p>
-            <p className="mt-5 max-w-[44ch] text-[12px] leading-[1.8] text-[var(--text-dim)]">
-              Everything is designed to run in an isolated Kali sandbox on its
-              own operational network, walled off from the machine that drives
-              it. Offense stays in the box.
-            </p>
-          </div>
-
-          <ul className="grid grid-cols-1 gap-px bg-[var(--rule)] sm:grid-cols-2">
-            {agents.map((t) => (
-              <li key={t.name} className="bg-[var(--bg)] px-7 py-8">
-                <div className="flex items-baseline justify-between">
-                  <span className="display-roman text-[32px] text-[var(--ink)]">{t.name}</span>
-                  <span className="text-[9px] tracking-[0.3em] text-[var(--accent)]">
-                    {t.status}
-                  </span>
-                </div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] text-[var(--text-dim)] uppercase">
-                  {t.tag}
-                </div>
-                <p className="mt-4 text-[12px] leading-[1.7] text-[var(--text)]">
-                  {t.desc}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ────────────── SIGNOFF / CTA ────────────── */
 
 function SignOff() {
@@ -800,9 +931,10 @@ function SignOff() {
               Write back.
             </h2>
             <p className="mt-7 max-w-[52ch] text-[14px] leading-[1.85] text-[var(--text)]">
-              KeroxLabs builds in the open. Patches, exploits, and hard questions
-              about doing offense responsibly — bring them. The bar is technical,
-              the reply is fast, the door is unlocked.
+              KeroxLabs builds KeroxOS in the open. Patches, packaging fixes, new
+              tool ports, and hard questions about doing offense responsibly —
+              bring them. The bar is technical, the reply is fast, the door is
+              unlocked.
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
@@ -828,18 +960,17 @@ function Footer() {
       ],
     },
     {
-      heading: "KEROX",
+      heading: "KEROXOS",
       items: [
-        { label: "ORCHESTRATOR", href: "#orchestrator" },
+        { label: "SYSTEM", href: "#system" },
+        { label: "ARSENAL", href: "#arsenal" },
         { label: "SPEARHEAD", href: "#spearhead" },
-        { label: "AGENTS", href: "#tools" },
       ],
     },
     {
       heading: "READ",
       items: [
         { label: "RESEARCH BOOK", href: "/research" },
-        { label: "ROADMAP", href: "/ROADMAP.md" },
         { label: "FORUM (SOON)", href: "#den" },
       ],
     },
@@ -910,51 +1041,82 @@ export default function Home() {
         <div className="divider-dash" />
 
         <Chapter
-          id="orchestrator"
+          id="system"
           num="I"
-          kicker="CHAPTER ONE · THE ORCHESTRATOR"
-          title="An adversary, not a scanner."
+          kicker="CHAPTER ONE · THE SYSTEM"
+          title="A console that comes loaded."
           body={
             <>
-              Kerox is not a scanner that runs nmap and prints a report. An
-              orchestrator reads an engagement plan, fixes on an objective, and
-              works toward it through whatever path actually opens up — chaining
-              reconnaissance, exploitation, privilege escalation, lateral
-              movement, and C2 the way a real operator would. When a door closes
-              it tries another. Findings are designed to feed a planned attack →
-              defend → verify loop, so every result is something a defender can
-              act on.
+              KeroxOS boots to a console and nothing else — no X11, no Wayland,
+              no display server. It is an x86_64 Linux distribution built from a
+              minimal, Arch-like base, on a mainline kernel configured for the
+              work: console-first, with the NIC, USB, and monitor-mode WiFi
+              drivers an operator actually needs. At the heart of it is{" "}
+              <span className="text-[var(--accent-bright)]">krx</span>, the
+              package manager that builds the whole arsenal from source. One
+              machine, one prompt, everything within reach.
             </>
           }
           status="BUILDING"
           seed="0x0FF5E7"
-          visual={<OrchestratorVisual />}
-          href="/research#orchestrator"
-          cta="SEE THE CHAIN"
+          visual={<SystemVisual />}
+          href="/research#system"
+          cta="INSIDE THE OS"
         />
         <div className="divider-dash" />
 
         <Chapter
-          id="spearhead"
+          id="arsenal"
           num="II"
-          kicker="CHAPTER TWO · SPEARHEAD"
-          title="An LLM red team."
+          kicker="CHAPTER TWO · THE ARSENAL"
+          title="150+ tools, renamed."
           body={
             <>
-              Spearhead is the agent pointed at the AI in the stack. It probes
-              the things only a language model gets wrong — prompt injection,
-              system-prompt leakage, guardrail bypass, tool-call exfiltration —
-              and is designed to report every finding against the OWASP LLM Top
-              10 and MITRE ATLAS, so it lands in a framework defenders already
-              use. It leads; the network agent follows it onto the rest of the
-              attack surface, and the report agent turns the run into something a
-              defender can use.
+              KeroxOS ships a curated arsenal that spans the whole of offensive
+              work — recon, web, network, cracking, C2, Active Directory,
+              wireless, reversing, telecom, and a dedicated AI/LLM track. Every
+              tool is real and upstream, given a Kerox codename:{" "}
+              <span className="text-[var(--accent-bright)]">Cartograph</span> is
+              nmap, <span className="text-[var(--accent-bright)]">Warhead</span>{" "}
+              is metasploit,{" "}
+              <span className="text-[var(--accent-bright)]">Hashreaper</span> is
+              hashcat. They are ordered by learning curve and built to run in a
+              terminal — GUI-only tools are dropped or driven headless. The
+              clone URLs are unchanged, so you can study the source you run.
             </>
           }
           status="BUILDING"
           seed="0xA71A5"
-          visual={<SpearheadVisual />}
+          visual={<ArsenalVisual />}
           reverse
+          href="/research#arsenal"
+          cta="OPEN THE ARSENAL"
+        />
+
+        <Arsenal />
+        <div className="divider-dash" />
+
+        <Chapter
+          id="spearhead"
+          num="III"
+          kicker="CHAPTER THREE · SPEARHEAD"
+          title="Pointed at the AI."
+          body={
+            <>
+              Spearhead is the autonomous agent inside KeroxOS, pointed at the AI
+              now wired into real systems. It probes the failure modes only a
+              language model has — prompt injection, system-prompt leakage,
+              guardrail bypass, tool-call exfiltration — driving the OS&apos;s own
+              AI/LLM track (<span className="text-[var(--accent-bright)]">Mindprobe</span>,{" "}
+              <span className="text-[var(--accent-bright)]">Redmind</span>,{" "}
+              <span className="text-[var(--accent-bright)]">Inquisitor</span>) and
+              reporting every finding against the OWASP LLM Top 10 and MITRE
+              ATLAS, so it lands in a framework defenders already use.
+            </>
+          }
+          status="BUILDING"
+          seed="0xC0BA17"
+          visual={<SpearheadVisual />}
           href="/research#spearhead"
           cta="MEET SPEARHEAD"
         />
@@ -962,32 +1124,31 @@ export default function Home() {
 
         <Chapter
           id="discipline"
-          num="III"
-          kicker="CHAPTER THREE · ENGAGEMENT DISCIPLINE"
+          num="IV"
+          kicker="CHAPTER FOUR · ENGAGEMENT DISCIPLINE"
           title="Discipline before the first packet."
           body={
             <>
-              Before a packet leaves the wire, Kerox writes the engagement down —
-              Rules of Engagement, a ConOps, a Deconfliction Plan, and an OPPLAN
-              mapped to MITRE ATT&amp;CK — and then is built to refuse to step
-              outside it. Every live action is dry-run by default and waits on an
-              explicit human approval; nothing runs outside authorized scope. The
-              whole thing is meant to read like a real operation, paperwork and
-              safeties included — offense you could actually sign off on.
+              A loaded OS is only as safe as the rules around it. Before a packet
+              leaves the wire, KeroxOS&apos;s automation layer writes the
+              engagement down — Rules of Engagement, a ConOps, a Deconfliction
+              Plan, and an OPPLAN mapped to MITRE ATT&amp;CK — and then is built
+              to refuse to step outside it. Every live action is dry-run by
+              default and waits on an explicit human approval; nothing runs
+              outside authorized scope. The tools are sharp; the discipline is
+              what makes them defensible.
             </>
           }
           status="BUILDING"
           seed="0xC02FF1"
           visual={<EngagementVisual />}
+          reverse
           href="/research#discipline"
           cta="READ THE RULES"
         />
         <div className="divider-dash" />
 
         <TheDen />
-        <div className="divider-dash" />
-
-        <Toolbox />
         <div className="divider-dash" />
 
         <PullQuote />

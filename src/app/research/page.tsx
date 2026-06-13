@@ -3,23 +3,24 @@ import Link from "next/link";
 
 /* ──────────────────────────────────────────────────────────
    KeroxLabs Research — mdBook-style documentation site.
-   Every chapter is anchor-scrollable. Sticky sidebar TOC
-   on desktop, collapsible top section on mobile.
+   How to build KeroxOS: a TTY-only, x86_64 console security
+   distro, from kernel to arsenal. Every chapter is anchor-
+   scrollable. Sticky sidebar TOC on desktop.
    ────────────────────────────────────────────────────────── */
 
 const TOC: { num: string; id: string; title: string; eta?: string }[] = [
   { num: "00", id: "overview",     title: "Overview" },
-  { num: "01", id: "architecture", title: "Architecture",                  eta: "Q1 2026" },
-  { num: "02", id: "orchestrator", title: "The orchestrator",              eta: "Q1 2026" },
-  { num: "03", id: "spearhead",    title: "Spearhead — LLM red team",      eta: "Q2 2026" },
-  { num: "04", id: "agents",       title: "Supporting agents",             eta: "Q2 2026" },
-  { num: "05", id: "discipline",   title: "Engagement discipline",         eta: "Q1 2026" },
-  { num: "06", id: "gate",         title: "The human gate",                eta: "Q1 2026" },
-  { num: "07", id: "tooling",      title: "Interactive tooling",           eta: "Q3 2026" },
-  { num: "08", id: "sandbox",      title: "The sandbox",                   eta: "Q3 2026" },
-  { num: "09", id: "defense",      title: "Attack → defend → verify",      eta: "Q4 2026" },
-  { num: "10", id: "cli",          title: "The krx CLI",                   eta: "Q4 2026" },
-  { num: "11", id: "stack",        title: "Tech stack" },
+  { num: "01", id: "constraints",  title: "Design constraints",            eta: "Q1 2026" },
+  { num: "02", id: "base",         title: "The base system",               eta: "Q1 2026" },
+  { num: "03", id: "kernel",       title: "The kernel",                    eta: "Q2 2026" },
+  { num: "04", id: "krx",          title: "krx — the package manager",     eta: "Q1 2026" },
+  { num: "05", id: "arsenal",      title: "The arsenal",                   eta: "rolling" },
+  { num: "06", id: "runtimes",     title: "Languages & runtimes",          eta: "Q2 2026" },
+  { num: "07", id: "spearhead",    title: "Spearhead — LLM red team",      eta: "Q2 2026" },
+  { num: "08", id: "aitrack",      title: "The AI / LLM track",            eta: "Q2 2026" },
+  { num: "09", id: "autonomy",     title: "The autonomous layer",          eta: "Q3 2026" },
+  { num: "10", id: "discipline",   title: "Engagement discipline",         eta: "Q3 2026" },
+  { num: "11", id: "gate",         title: "The gate & the sandbox",        eta: "Q3 2026" },
   { num: "12", id: "security",     title: "Authorization & ethics" },
   { num: "13", id: "contrib",      title: "Contributing & RFCs" },
   { num: "14", id: "glossary",     title: "Glossary" },
@@ -41,8 +42,8 @@ function Nav() {
           </span>
         </Link>
         <nav className="flex items-center gap-8 text-[10px] tracking-[0.3em]">
-          <Link href="/#orchestrator" className="nav-link hidden sm:inline">ORCHESTRATOR</Link>
-          <Link href="/#spearhead" className="nav-link hidden sm:inline">SPEARHEAD</Link>
+          <Link href="/#system" className="nav-link hidden sm:inline">SYSTEM</Link>
+          <Link href="/#arsenal" className="nav-link hidden sm:inline">ARSENAL</Link>
           <span className="text-[var(--accent)]">RESEARCH</span>
           <Link href="/#den" className="nav-link hidden sm:inline">FORUM</Link>
           <a href="https://github.com/keroxlabs" className="nav-link">GITHUB</a>
@@ -65,8 +66,8 @@ function Sidebar() {
         Build it <br /> from scratch.
       </h2>
       <p className="mb-8 max-w-[28ch] text-[11.5px] leading-[1.75] text-[var(--text-dim)]">
-        Everything we are figuring out while building Kerox — the orchestrator,
-        the agents, and the discipline around them — written down as we go.
+        Everything we are figuring out while building KeroxOS — the base, the
+        kernel, krx, the arsenal, and the agents on top — written down as we go.
         Notes, designs, and snippets, not a finished manual.
       </p>
 
@@ -94,7 +95,7 @@ function Sidebar() {
       </nav>
 
       <div className="mt-10 border-t border-dashed border-[var(--rule-bright)] pt-6 text-[10px] tracking-[0.28em] text-[var(--text-dimmer)]">
-        <div>VOL. 01 · MAY 2026</div>
+        <div>VOL. 01 · JUN 2026</div>
         <div className="mt-2">EDITED LIVE</div>
         <Link href="/" className="mt-5 inline-flex items-center gap-2 text-[var(--accent)] hover:text-[var(--accent-bright)]">
           ← back to landing
@@ -211,14 +212,16 @@ export default function ResearchPage() {
           <div className="mb-16 border-b border-dashed border-[var(--rule-bright)] pb-12">
             <div className="eyebrow"><span>KEROXLABS · RESEARCH</span></div>
             <h1 className="display mt-5 text-[44px] leading-[0.98] sm:text-[64px] md:text-[80px]">
-              How to build an autonomous red team, in Rust, by hand.
+              How to build a TTY-only security OS, by hand.
             </h1>
             <p className="mt-7 max-w-[64ch] text-[15px] leading-[1.85] text-[var(--text)]">
-              This is the working notebook for Kerox — a Rust-native,
-              terminal-first, multi-agent autonomous red team. None of it is
-              finished; this book is the design thinking as it happens. Sections
-              that describe something still being built are marked{" "}
-              <Code>ETA</Code> so you know what is real and what is planned.
+              This is the working notebook for KeroxOS — a TTY-only, x86_64
+              console Linux distribution for offensive operators: a base, a
+              kernel, the <Code>krx</Code> package manager, and a curated arsenal
+              of 150+ red-team tools. None of it is finished; this book is the
+              design thinking as it happens. Sections that describe something
+              still being built are marked <Code>ETA</Code> so you know what is
+              real and what is planned.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-2 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
               <span>EDITION · LIVE</span>
@@ -230,29 +233,30 @@ export default function ResearchPage() {
           {/* CHAPTERS */}
           <Chapter num="00" id="overview" title="Overview">
             <P>
-              Kerox is a Rust-native, terminal-first, vendor-neutral autonomous
-              red team. The short version: an orchestrator reads an engagement
-              plan and pursues an objective the way an adversary would — not the
-              way a scanner does. It is open, it is in progress, and it is built
-              by hand.
+              KeroxOS is a TTY-only, x86_64 console Linux distribution built for
+              offensive operators. The short version: it boots to a prompt and
+              nothing else, ships a curated arsenal of red-team tooling, builds
+              that tooling from source with its own package manager, and runs an
+              autonomous agent pointed at the AI surface. It is open, it is in
+              progress, and it is built by hand.
             </P>
             <P>
-              Most automated &quot;offensive&quot; tooling runs a fixed battery
-              of checks and prints a report. That is useful, but it is not what
-              an attacker does. An attacker has a goal, improvises a path toward
-              it, and chains small wins into a big one. Kerox is an attempt to
-              build a system that works that second way — under tight discipline,
-              against authorized scope only.
+              Most security distributions are a desktop with a menu of tools
+              bolted on. KeroxOS is the opposite bet: no display server, no
+              window manager, no GUI in the base — just a console, a kernel tuned
+              for the work, and an arsenal that runs in a terminal. The wager is
+              that an operator who lives at a prompt is faster, scriptable, and
+              honest about what the machine is doing.
             </P>
             <H3>What you will find in this book</H3>
             <UL>
-              <LI>The agent architecture — one orchestrator, a roster of specialists</LI>
-              <LI>How the orchestrator turns an engagement plan into a real attack chain</LI>
-              <LI><Code>spearhead</Code>, the LLM/AI red-team agent, and how findings map to OWASP LLM Top 10 and MITRE ATLAS</LI>
-              <LI>The engagement package — RoE, ConOps, Deconfliction, OPPLAN — and why it comes before any packet</LI>
-              <LI>The human gate, the dry-run default, and the sandbox the whole thing runs inside</LI>
-              <LI>The attack → defend → verify loop that points offense back at defense</LI>
-              <LI>The <Code>krx</Code> CLI, the planned tech stack, and how to contribute</LI>
+              <LI>The design constraints — why TTY-only, why x86_64, and why we left the ARM/Android lineage behind</LI>
+              <LI>The base system and the mainline kernel, configured console-first</LI>
+              <LI><Code>krx</Code>, the package manager that builds the whole arsenal from source</LI>
+              <LI>The arsenal itself — 150+ tools across 14 phases, every one renamed, ordered by learning curve</LI>
+              <LI>The language runtimes, and why most Go tools were re-homed to Python</LI>
+              <LI><Code>spearhead</Code> and the AI/LLM track — how findings map to OWASP LLM Top 10 and MITRE ATLAS</LI>
+              <LI>The autonomous layer, the engagement discipline, the human gate, and the ethics that bound all of it</LI>
             </UL>
             <H3>How to read it</H3>
             <P>
@@ -269,93 +273,182 @@ export default function ResearchPage() {
             </Note>
           </Chapter>
 
-          <Chapter num="01" id="architecture" title="Architecture" eta="Q1 2026">
+          <Chapter num="01" id="constraints" title="Design constraints" eta="Q1 2026">
             <P>
-              The architecture is deliberately small: one orchestrator that owns
-              the plan and the decisions, and a set of specialist agents it
-              dispatches to do the actual work. The orchestrator never touches a
-              target directly — it reasons, it sequences, and it hands concrete
-              tasks to agents that know one domain well.
+              KeroxOS started life adjacent to the ANDRAX Android/ARM lineage.
+              The current design moves it off that lineage entirely: it is now an
+              x86_64 console Linux distribution — think a minimal netinst,
+              Arch-like base plus <Code>krx</Code> — not an Android-on-phone
+              overlay. The constraints below are load-bearing; everything else
+              follows from them.
             </P>
-            <Pre>{`            engagement plan (authorized scope)
-                          │
-                  ┌───────▼────────┐
-                  │  ORCHESTRATOR  │  reads plan · sequences chain
-                  │  (human gate)  │  holds every live action
-                  └───────┬────────┘
-                          │ dispatch
-        ┌─────────┬───────┼────────┬──────────┐
-        ▼         ▼       ▼        ▼          ▼
-   spearhead   network  report    web      (more…)
-    LLM/AI     surface  write-up  apps
-        │         │       │        │          │
-        └─────────┴───────┴────────┴──────────┘
-                          │
-                    isolated Kali sandbox
-                    (dedicated op network)`}</Pre>
-            <H3>Why split it this way</H3>
+            <H3>The hard constraints</H3>
             <UL>
-              <LI>The orchestrator carries the goal and the rules; agents carry the craft. Neither leaks into the other.</LI>
-              <LI>Agents are replaceable. A better network agent drops in without the orchestrator noticing.</LI>
-              <LI>Every live action funnels back through one place — the gate — so there is exactly one chokepoint to audit.</LI>
-              <LI>Vendor-neutral by design: nothing is tied to a single model provider or a single C2.</LI>
+              <LI><b>Architecture</b> — <Code>amd64 / x86_64</Code> only. Everything is built for one triple: <Code>x86_64-linux-gnu</Code>.</LI>
+              <LI><b>Interface</b> — TTY-only. No X11, no Wayland, no display server, no GUI apps in the base. Everything runs in a console.</LI>
+              <LI><b>Lineage</b> — off Android/ARM. The old phone kernel is gone; this is a desktop/server-class x86_64 distro.</LI>
             </UL>
-            <H3>Written in Rust, run from a terminal</H3>
-            <P>
-              The control plane is Rust — for the type system, the error
-              discipline, and a single static binary that is easy to reason
-              about. The interface is a terminal, because that is where this
-              work actually happens and because a TUI is honest about what it is
-              doing.
-            </P>
-          </Chapter>
-
-          <Chapter num="02" id="orchestrator" title="The orchestrator" eta="Q1 2026">
-            <P>
-              The orchestrator is the brain. It reads an engagement plan, fixes
-              on an objective, and works toward it through whatever path opens
-              up — chaining reconnaissance, exploitation, privilege escalation,
-              lateral movement, and C2. When one route closes, it backs up and
-              tries another. This is the part that makes Kerox an adversary and
-              not a checklist.
-            </P>
-            <H3>The loop</H3>
+            <H3>What that costs, and what it doesn&apos;t</H3>
             <UL>
-              <LI><b>Orient</b> — read the plan, the scope, and whatever the agents have learned so far</LI>
-              <LI><b>Decide</b> — pick the next technique that moves the objective forward</LI>
-              <LI><b>Gate</b> — if the step is a live action, stop and ask a human</LI>
-              <LI><b>Act</b> — dispatch the approved task to the right specialist agent</LI>
-              <LI><b>Observe</b> — fold the result back in, then orient again</LI>
+              <LI>The old ARM phone kernel (a Xiaomi Mi9 tree) is the wrong architecture and is <b>dropped</b>; we build a mainline x86_64 kernel instead (see ch. 03).</LI>
+              <LI>GUI-only tools are dropped or run headless — ZAP as a daemon, mitmproxy in its console TUI, PE analysis via CLI rather than a Qt viewer.</LI>
+              <LI>Mobile <i>analysis</i> tools stay. They run fine on x86_64 — they analyze mobile apps, they don&apos;t need to <i>be</i> on a phone.</LI>
+              <LI>Hardware tools (wireless, RF, smartcard, CAN) still need their physical adapters on the x86_64 host. That is unchanged.</LI>
             </UL>
-            <H3>Mapped to ATT&amp;CK as it goes</H3>
-            <P>
-              Every step the orchestrator plans is tagged with the MITRE
-              ATT&amp;CK technique it corresponds to, so the chain reads like a
-              real operation and so the eventual report speaks the language a
-              blue team already uses.
-            </P>
-            <Pre>{`# illustrative — names and IDs will move
-recon     T1595  active scanning        [plan]
-access    T1190  exploit public app     [plan]
-privesc   T1068  exploit for escalation [plan]
-lateral   T1021  remote services        [plan]
-collect   T1119  automated collection   [plan]
-c2        T1071  application-layer C2    [plan]
-# nothing fires until a human approves the step`}</Pre>
             <Note>
-              The chain above is a <i>plan</i>, not a run. The orchestrator is
-              designed to produce the full chain first, in dry-run, and only
-              execute steps a human has explicitly signed off on.
+              TTY-only is not nostalgia. A console is scriptable, fits over SSH
+              and a serial line, survives on minimal hardware, and never hides a
+              live action behind a window you forgot was open.
             </Note>
           </Chapter>
 
-          <Chapter num="03" id="spearhead" title="Spearhead — LLM red team" eta="Q2 2026">
+          <Chapter num="02" id="base" title="The base system" eta="Q1 2026">
             <P>
-              Spearhead is the lead agent and the reason Kerox exists in the
-              shape it does. It is pointed at the AI in the stack — the chatbots,
-              copilots, and tool-using agents that are now wired into real
+              The base is deliberately small — the files, the console
+              environment, and the handful of userland utilities an operator
+              needs before any tool is installed. Everything above it is a{" "}
+              <Code>krx</Code> package.
+            </P>
+            <H3>What ships in base</H3>
+            <UL>
+              <LI><b>Kerox-base</b> — the base files and the console environment the rest of the system assembles on.</LI>
+              <LI><b>Keroedit</b> — the default terminal editor, with nano and vim from base; no GUI editor.</LI>
+              <LI><b>Pixterm</b> — terminal graphics and image viewing, for when you need to <i>see</i> something without a display server.</LI>
+              <LI><b>Foxdrive</b> — a headless WebDriver, an optional add-on rather than base, installed only for automated web testing and always run <Code>--headless</Code>.</LI>
+            </UL>
+            <P>
+              The rule for base is restraint: if it is not needed to bring up a
+              usable console and reach <Code>krx</Code>, it is a package, not part
+              of the base.
+            </P>
+          </Chapter>
+
+          <Chapter num="03" id="kernel" title="The kernel" eta="Q2 2026">
+            <P>
+              KeroxOS runs a mainline x86_64 Linux kernel, custom-configured for
+              the work. The previous lineage shipped an ARM phone kernel; that
+              tree is the wrong architecture and has been dropped. The
+              replacement is built from <Code>torvalds/linux</Code> with a config
+              shaped around three things.
+            </P>
+            <UL>
+              <LI><b>Console-first</b> — no DRM/GUI stack pulled in; the kernel comes up to a text console and stays there.</LI>
+              <LI><b>Pentest NIC &amp; USB drivers</b> — the network and USB devices an operator actually plugs in are present in the build.</LI>
+              <LI><b>Monitor-mode WiFi</b> — the wireless drivers and modes the RF arsenal needs (ch. 05, L11) are compiled in.</LI>
+            </UL>
+            <Note>
+              The kernel is where the TTY-only decision becomes real. A kernel
+              with no display stack cannot accidentally bring up a desktop, and a
+              build that knows the operator&apos;s adapters is half of what makes
+              the wireless tools usable at all.
+            </Note>
+          </Chapter>
+
+          <Chapter num="04" id="krx" title="krx — the package manager" eta="Q1 2026">
+            <P>
+              <Code>krx</Code> is the heart of the OS. It is the package manager
+              that resolves, fetches, builds, and installs the entire arsenal
+              from source. If KeroxOS has a single defining program, this is it.
+            </P>
+            <H3>How it works</H3>
+            <UL>
+              <LI>Every tool has a Kerox <b>codename</b>; <Code>krx</Code> resolves the codename to a real upstream repository.</LI>
+              <LI>The <b>clone URLs are unchanged</b> — they still point at the original upstream projects, so the source you build is the source you can read.</LI>
+              <LI>Tools are <b>built from source</b> for the <Code>x86_64-linux-gnu</Code> target, not pulled as opaque binaries.</LI>
+            </UL>
+            <Pre>{`# illustrative — verbs and output will move
+$ krx search c2
+  warhead    ← metasploit   [L9]   full exploitation framework
+  overlord   ← netexec      [L9]   network execution / lateral
+  marauder   ← villain      [L9]   multi-session C2
+
+$ krx install cartograph sweep
+  → cartograph ← nmap     building from source… [ OK ]
+  → sweep      ← masscan  building from source… [ OK ]
+
+$ krx fetch                         # neofetch-style system readout`}</Pre>
+            <Note>
+              The rename is a brand, not a fork. <Code>Cartograph</Code> is nmap;
+              it is built from nmap&apos;s own tree. The codename gives the OS a
+              coherent identity; the unchanged URL keeps it honest.
+            </Note>
+          </Chapter>
+
+          <Chapter num="05" id="arsenal" title="The arsenal" eta="rolling">
+            <P>
+              The arsenal is the reason to run KeroxOS. It is roughly 150 tools
+              across 14 phases, ordered by learning curve — gentle warm-up
+              utilities first, the steepest binary and RF work last — so the
+              build (and the operator) climbs the curve in order.
+            </P>
+            <H3>The 14 phases</H3>
+            <Pre>{`L1  warm-up utilities      Netcleave · Pulse · Ghostname · Weaver
+L2  web content discovery  Pathfinder · Fuzzfang · Crawl
+L3  dns & subdomain        Floodns · Subscout · Dnsdig
+L4  http recon / fingerpr. Imprint · Probe · Stinger
+L5  network scanning       Cartograph (nmap) · Sweep (masscan)
+L6  web app exploitation   Injector (sqlmap) · Crossfire · Tokenrip
+L7  password attacks       Hashreaper (hashcat) · Ripper · Manyfang
+L8  mitm / proxy / tunnel  Interpose · Wormhole · Pivot
+L9  exploitation / c2 / ad Warhead (metasploit) · Overlord · Bloodtrail
+L10 mobile (android / ios) Apkforge · Dexlight · Hookpoint
+L11 wireless / rf / ble    Airbane · Bluefang · Swiftknife (bettercap)
+L12 reversing / binary     Dissect (rizin) · Fuzzstorm (AFL++) · Firmwalk
+L13 telecom / ics / iot    Sixstrike · Modbreaker · Canbox
+L14 stress / dos           Slowstorm · Packetforge`}</Pre>
+            <H3>Re-homed off Go</H3>
+            <P>
+              Most Go tools were swapped for Python or Shell equivalents to keep
+              the build surface small and the runtimes few. Three Go programs are
+              kept because nothing matches them:{" "}
+              <Code>Stinger</Code> (nuclei),{" "}
+              <Code>Swiftknife</Code> (bettercap), and the{" "}
+              <Code>Kgo</Code> runtime that builds them.
+            </P>
+            <H3>Headless or dropped</H3>
+            <UL>
+              <LI><Code>Zephyr</Code> (ZAP) runs daemon/headless only — <Code>zap.sh -daemon</Code> plus the API, no Java GUI.</LI>
+              <LI><Code>Interpose</Code> (mitmproxy) uses the console TUI / <Code>mitmdump</Code>, never <Code>mitmweb</Code>.</LI>
+              <LI>Qt-only tools like pe-bear are dropped; PE/ELF work goes through <Code>Peeler</Code> (LIEF) and <Code>Dissect</Code>.</LI>
+            </UL>
+            <Note>
+              The codenames are a coherent set, not a gimmick:{" "}
+              <Code>Hashreaper</Code>, <Code>Bloodtrail</Code>,{" "}
+              <Code>Crossfire</Code>, <Code>Warhead</Code>. The full mapping —
+              every codename, its upstream, its level — lives in the build order
+              and ships with the OS.
+            </Note>
+          </Chapter>
+
+          <Chapter num="06" id="runtimes" title="Languages & runtimes" eta="Q2 2026">
+            <P>
+              Because the arsenal is built from source, KeroxOS ships its own
+              toolchain installers rather than relying on whatever a base image
+              happens to carry. Each is a thin, pinned installer that{" "}
+              <Code>krx</Code> can depend on.
+            </P>
+            <UL>
+              <LI><Code>Kpython</Code> — a custom Python 3 build; the dominant runtime, since most of the arsenal is Python.</LI>
+              <LI><Code>Krust</Code> — the Rust toolchain, for the systems-level pieces and a handful of Rust tools.</LI>
+              <LI><Code>Knim</Code> — Nim, where a tool needs it.</LI>
+              <LI><Code>Kpipx</Code> — pipx, for isolated Python application installs.</LI>
+              <LI><Code>Kfrida</Code> — Frida, the dynamic-instrumentation runtime the mobile and RE tools lean on.</LI>
+              <LI><Code>Kgo</Code> — the Go runtime, kept only for the three Go exceptions (ch. 05).</LI>
+            </UL>
+            <P>
+              The bias is toward few runtimes, well pinned. Re-homing Go tools to
+              Python was largely about not carrying a second large toolchain for
+              a handful of programs.
+            </P>
+          </Chapter>
+
+          <Chapter num="07" id="spearhead" title="Spearhead — LLM red team" eta="Q2 2026">
+            <P>
+              Spearhead is the lead agent and the reason KeroxOS carries a
+              dedicated AI track. It is pointed at the AI in the stack — the
+              chatbots, copilots, and tool-using agents now wired into real
               systems — and it probes the failure modes that are unique to
-              language models.
+              language models, driving the OS&apos;s own AI/LLM tooling (ch. 08).
             </P>
             <H3>What it probes</H3>
             <UL>
@@ -366,8 +459,8 @@ c2        T1071  application-layer C2    [plan]
             </UL>
             <H3>Mapped to the frameworks defenders use</H3>
             <P>
-              A finding that nobody can act on is noise. Spearhead is designed to
-              report every result against the{" "}
+              A finding that nobody can act on is noise. Spearhead reports every
+              result against the{" "}
               <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" className="text-[var(--accent-bright)] underline-offset-2 hover:underline">OWASP LLM Top 10</a>{" "}
               and{" "}
               <a href="https://atlas.mitre.org/" className="text-[var(--accent-bright)] underline-offset-2 hover:underline">MITRE ATLAS</a>,
@@ -379,53 +472,65 @@ prompt injection      LLM01   AML.T0051
 system-prompt leak    LLM07   AML.T0054
 guardrail bypass      LLM02   AML.T0054
 tool-call exfil       LLM06   AML.T0057`}</Pre>
-            <P>
-              Spearhead leads; the supporting agents follow it onto the rest of
-              the attack surface once it has found a way in — or once it has
-              proven there isn&apos;t one.
-            </P>
           </Chapter>
 
-          <Chapter num="04" id="agents" title="Supporting agents" eta="Q2 2026">
+          <Chapter num="08" id="aitrack" title="The AI / LLM track" eta="Q2 2026">
             <P>
-              Spearhead handles the model. The rest of the roster handles
-              everything around it — the conventional surface, and turning the
-              run into something a defender can act on. Each one is a specialist
-              with a narrow brief.
+              Alongside the conventional 14 phases, KeroxOS carries a parallel
+              AI-security track. It is the toolset Spearhead drives, and it is
+              what makes the AI claim more than marketing. Like the rest of the
+              arsenal, every tool is real and upstream — renamed, URLs unchanged —
+              and ordered by its own learning curve.
             </P>
-            <H3>network</H3>
-            <P>
-              Maps the attack surface and works it. Recon and enumeration first —
-              the handful of openings that matter, not a thousand low-signal
-              findings — then services, trust paths, and lateral movement once a
-              foothold lands.
-            </P>
-            <H3>report</H3>
-            <P>
-              Turns the engagement into a deliverable. Narrative plus findings,
-              mapped to MITRE ATT&amp;CK and ATLAS, rendered as Markdown, JSON, or
-              SARIF — including the dropped and ruled-out reasons, which are half
-              the value.
-            </P>
-            <H3>web, appsec — later</H3>
-            <P>
-              The web surface (injection, access-control, logic flaws) and the
-              source-code surface are designed into the roster and stubbed for
-              now. They ship once the wedge, the network agent, and the report
-              agent are solid.
-            </P>
+            <H3>The four tiers</H3>
+            <UL>
+              <LI><b>AI-1 · Guardrails &amp; filters</b> — <Code>Mindguard</Code> (llm-guard), <Code>Deflect</Code> (rebuff), <Code>Railmind</Code> (NeMo-Guardrails). The easy on-ramp: wrap a model, filter in and out.</LI>
+              <LI><b>AI-2 · Model supply-chain</b> — <Code>Modelsift</Code> (modelscan) and <Code>Unpickle</Code> (fickling), for scanning model files and pickles for malicious code.</LI>
+              <LI><b>AI-3 · Red teaming</b> — the core skill: <Code>Mindprobe</Code> (garak), <Code>Redmind</Code> (deepteam), <Code>Inquisitor</Code> (PyRIT), <Code>Agentbane</Code> (agentic_security).</LI>
+              <LI><b>AI-4 · Adversarial ML</b> — the steep, math-heavy end: <Code>Adverforge</Code> (ART), <Code>Textbreak</Code> (TextAttack), <Code>Suffixstorm</Code> (GCG suffixes).</LI>
+            </UL>
             <Note>
-              The agent roster is open-ended on purpose. The orchestrator does
-              not care how many agents exist or what they are called; it only
-              cares that each one advertises what techniques it can run.
+              The track is slotted in around the conventional Level 6–9 work:
+              once you are comfortable scripting Python tooling, the AI red-team
+              tools are the same muscle pointed at a model instead of a host.
             </Note>
           </Chapter>
 
-          <Chapter num="05" id="discipline" title="Engagement discipline" eta="Q1 2026">
+          <Chapter num="09" id="autonomy" title="The autonomous layer" eta="Q3 2026">
             <P>
-              This is the part that separates a red team from a vandal. Before a
-              packet leaves the wire, Kerox writes the engagement down — and then
-              is built to refuse to step outside what it wrote.
+              On top of the OS sits an optional autonomous layer — an
+              orchestrator that can read an engagement plan and work an objective
+              the way an adversary would, dispatching the arsenal rather than
+              running a fixed battery of checks. It never touches a target
+              directly; it reasons, sequences, and hands concrete tasks to the
+              tools.
+            </P>
+            <H3>The loop</H3>
+            <UL>
+              <LI><b>Orient</b> — read the plan, the scope, and whatever has been learned so far</LI>
+              <LI><b>Decide</b> — pick the next technique that moves the objective forward</LI>
+              <LI><b>Gate</b> — if the step is a live action, stop and ask a human (ch. 11)</LI>
+              <LI><b>Act</b> — dispatch the approved task to the right tool in the arsenal</LI>
+              <LI><b>Observe</b> — fold the result back in, then orient again</LI>
+            </UL>
+            <P>
+              Every step the orchestrator plans is tagged with the MITRE
+              ATT&amp;CK technique it corresponds to, so the chain reads like a
+              real operation and the eventual report speaks a language the blue
+              team already uses.
+            </P>
+            <Note>
+              The autonomous layer is a capability of KeroxOS, not its whole
+              point. The OS is useful at a prompt with no agent running at all;
+              the orchestrator is for when you want the machine to drive.
+            </Note>
+          </Chapter>
+
+          <Chapter num="10" id="discipline" title="Engagement discipline" eta="Q3 2026">
+            <P>
+              This is the part that separates a red team from a vandal. Before
+              the automation layer sends a packet, it writes the engagement down —
+              and is built to refuse to step outside what it wrote.
             </P>
             <H3>The engagement package</H3>
             <UL>
@@ -434,11 +539,6 @@ tool-call exfil       LLM06   AML.T0057`}</Pre>
               <LI><b>Deconfliction Plan</b> — how to tell our activity apart from a real incident, and who to call</LI>
               <LI><b>OPPLAN</b> — the operational plan, with each intended action mapped to MITRE ATT&amp;CK</LI>
             </UL>
-            <P>
-              The package is generated first, reviewed by a human, and then
-              treated as the boundary for everything that follows. An action
-              that is not covered by the package does not run.
-            </P>
             <Pre>{`# illustrative scope file — the boundary, not a suggestion
 scope:
   in:   ["10.10.0.0/24", "app.example-lab.internal"]
@@ -448,26 +548,20 @@ scope:
     - "any sign of real user impact"
     - "any host outside 'in'"`}</Pre>
             <Note>
-              Authorization is not a formality here. Kerox is meant to be run
+              Authorization is not a formality. KeroxOS is meant to be run
               against systems you are explicitly permitted to test, inside the
               scope you wrote down. That constraint is load-bearing.
             </Note>
           </Chapter>
 
-          <Chapter num="06" id="gate" title="The human gate" eta="Q1 2026">
+          <Chapter num="11" id="gate" title="The gate & the sandbox" eta="Q3 2026">
             <P>
-              Autonomy without a brake is just a liability. Kerox is autonomous
-              in how it reasons and plans, but every live action is dry-run by
-              default and stops at an explicit human approval before it touches
-              anything real.
+              Autonomy without a brake is just a liability. The OS is fast at a
+              prompt, but the automation layer is dry-run by default and stops at
+              an explicit human approval before any live action touches anything
+              real.
             </P>
             <H3>Dry-run is the default, not an option</H3>
-            <P>
-              In its planning mode, Kerox produces the full chain — every
-              technique, every command, every target — without sending a thing.
-              You read the plan. You approve the steps you want. Only then does a
-              live action go out, and only the steps you approved.
-            </P>
             <Pre>{`$ krx run --plan engagement.kx        # build the chain, send nothing
   → 11 steps planned · 0 executed · review required
 
@@ -481,134 +575,37 @@ $ krx run --execute --step 03         # fire only what was approved
               <LI>Approvals are per-step, not a single blanket &quot;go&quot;</LI>
               <LI>The default answer to every prompt is no</LI>
             </UL>
-          </Chapter>
-
-          <Chapter num="07" id="tooling" title="Interactive tooling" eta="Q3 2026">
+            <H3>Two planes</H3>
             <P>
-              Real offensive tools are interactive. They drop you into a console,
-              ask questions, and keep state across a session. A lot of automation
-              pretends this isn&apos;t true and scripts around it; Kerox is being
-              built to sit inside it instead.
-            </P>
-            <H3>Persistent terminal sessions</H3>
-            <P>
-              The agents drive tools like <Code>msfconsole</Code>,{" "}
-              <Code>sliver-client</Code>, and <Code>evil-winrm</Code> inside
-              persistent terminal sessions — sending input, reading output, and
-              answering interactive prompts the way a person at the keyboard
-              would. A session that is established stays established; a pivot
-              does not drop because the automation forgot to hold the handle.
-            </P>
-            <UL>
-              <LI>Tools run in their native console, not behind a brittle one-shot wrapper</LI>
-              <LI>Interactive prompts are handled, not avoided</LI>
-              <LI>Session state survives across steps in the chain</LI>
-            </UL>
-            <Note>
-              This is harder than shelling out once and parsing stdout, and that
-              is the point. The tools were built to be driven by a human at a
-              prompt; Kerox is built to be that driver.
-            </Note>
-          </Chapter>
-
-          <Chapter num="08" id="sandbox" title="The sandbox" eta="Q3 2026">
-            <P>
-              Offense stays in a box. Operations are designed to run inside an
-              isolated Kali sandbox on a dedicated operational network, kept
-              separate from the management plane that drives the engagement.
-            </P>
-            <H3>Two planes, on purpose</H3>
-            <UL>
-              <LI><b>Management plane</b> — where you read plans, give approvals, and read results. It never touches a target.</LI>
-              <LI><b>Operational plane</b> — the Kali sandbox on its own network, where the agents and their tools actually run.</LI>
-            </UL>
-            <P>
-              The split means the machine you sit at is not the machine that runs
-              exploits, and a target can never reach back past the sandbox to the
-              place where decisions are made.
+              Offense stays in a box. The recommended deployment keeps a{" "}
+              <b>management plane</b> — where you read plans and give approvals —
+              separate from the <b>operational plane</b>, the KeroxOS instance on
+              a dedicated operational network that actually runs the tools. The
+              machine you decide from is not the machine that fires.
             </P>
             <Note>
-              Isolation is a design goal, not a finished guarantee. Treat the
-              sandbox like any other lab boundary: necessary, and not a
-              substitute for running only against scope you are authorized to
-              touch.
+              Isolation is a design goal, not a finished guarantee. Treat it like
+              any lab boundary: necessary, and not a substitute for running only
+              against scope you are authorized to touch.
             </Note>
-          </Chapter>
-
-          <Chapter num="09" id="defense" title="Attack → defend → verify" eta="Q4 2026">
-            <P>
-              The reason to build a disciplined attacker is to make defense
-              better. Kerox is designed around a loop that turns each finding
-              into a concrete defensive improvement and then proves the
-              improvement actually holds.
-            </P>
-            <H3>The loop</H3>
-            <UL>
-              <LI><b>Attack</b> — the chain reaches the objective, or gets as far as it can, and records exactly how</LI>
-              <LI><b>Defend</b> — each step becomes a candidate fix: a detection, a control, a config change</LI>
-              <LI><b>Verify</b> — re-run the same step against the hardened system and confirm it now fails</LI>
-            </UL>
-            <P>
-              A finding you cannot reproduce is a rumor; a fix you cannot verify
-              is a hope. Closing the loop is what makes the offense worth doing.
-            </P>
-          </Chapter>
-
-          <Chapter num="10" id="cli" title="The krx CLI" eta="Q4 2026">
-            <P>
-              The whole thing is driven from one terminal command:{" "}
-              <Code>krx</Code>. The verbs below are a design sketch — they will
-              change — but they show the intended shape: plan, review, approve,
-              run, report.
-            </P>
-            <UL>
-              <LI><Code>krx plan</Code> — generate the engagement package and the dry-run attack chain</LI>
-              <LI><Code>krx scope</Code> — validate a target against the authorized scope file</LI>
-              <LI><Code>krx spearhead</Code> — point the LLM agent at a target and map findings to ATLAS</LI>
-              <LI><Code>krx approve</Code> — arm a specific step for live execution</LI>
-              <LI><Code>krx run</Code> — execute approved steps, or the whole chain in dry-run</LI>
-              <LI><Code>krx verify</Code> — re-run a step against the hardened system to confirm the fix</LI>
-              <LI><Code>krx report</Code> — write the engagement up, ATT&amp;CK- and ATLAS-mapped</LI>
-            </UL>
-            <Note>
-              There is no public release of <Code>krx</Code> yet. The commands
-              here describe where it is headed, not something you can install
-              today.
-            </Note>
-          </Chapter>
-
-          <Chapter num="11" id="stack" title="Tech stack">
-            <P>
-              Planned, and subject to change as the build teaches us things. The
-              bias is toward a small number of well-understood pieces over a
-              large framework.
-            </P>
-            <UL>
-              <LI><b>Rust</b> — the control plane, the orchestrator, and the agent harness; one static binary</LI>
-              <LI><b>Terminal-first</b> — a TUI for plans, approvals, and live session output</LI>
-              <LI><b>Vendor-neutral LLM access</b> — Spearhead is not tied to a single model provider</LI>
-              <LI><b>Kali</b> — the operational sandbox image and its tooling</LI>
-              <LI><b>Existing offensive tools</b> — driven, not reinvented: msfconsole, sliver-client, evil-winrm, and friends</LI>
-              <LI><b>MITRE ATT&amp;CK + ATLAS, OWASP LLM Top 10</b> — the mapping vocabulary, not dependencies</LI>
-            </UL>
           </Chapter>
 
           <Chapter num="12" id="security" title="Authorization & ethics">
             <P>
-              Kerox is an offensive tool, and offensive tools have to be honest
-              about what they are for. It is built to be run by people with
-              permission, against systems they are allowed to test, inside a
+              KeroxOS is an offensive distribution, and offensive tools have to
+              be honest about what they are for. It is built to be run by people
+              with permission, against systems they are allowed to test, inside a
               scope they wrote down. The discipline chapters above are not
               decoration — they are the whole design constraint.
             </P>
             <H3>What that means in practice</H3>
             <UL>
-              <LI>Authorized scope only. No scope file, no run.</LI>
+              <LI>Authorized scope only. No scope file, no automated run.</LI>
               <LI>Dry-run by default. Live actions need an explicit human yes.</LI>
-              <LI>Operations stay in the sandbox, on the operational network.</LI>
+              <LI>Operations stay on the operational network, behind the two-plane split.</LI>
               <LI>Findings exist to be fixed, not collected.</LI>
             </UL>
-            <H3>Reporting an issue in Kerox itself</H3>
+            <H3>Reporting an issue in KeroxOS itself</H3>
             <P>
               When there is something to report, security contact goes to{" "}
               <Code>security@kerox.dev</Code>, with a PGP key published at{" "}
@@ -619,40 +616,42 @@ $ krx run --execute --step 03         # fire only what was approved
 
           <Chapter num="13" id="contrib" title="Contributing & RFCs">
             <P>
-              KeroxLabs builds in the open. Patches, bug reports, and hard
-              questions about doing offense responsibly are all welcome. The bar
-              is technical; the response is fast.
+              KeroxLabs builds in the open. New tool ports, packaging fixes for{" "}
+              <Code>krx</Code>, kernel-config patches, and hard questions about
+              doing offense responsibly are all welcome. The bar is technical;
+              the response is fast.
             </P>
             <H3>RFC process</H3>
             <UL>
-              <LI>Anything that touches the agent protocol, the engagement-package format, or the gate requires an RFC</LI>
+              <LI>Anything that touches the <Code>krx</Code> package format, the codename map, the kernel config, or the gate requires an RFC</LI>
               <LI>RFCs live in <Code>docs/rfcs/RFC-XXXX-&lt;slug&gt;.md</Code></LI>
               <LI>Discuss first in the forum (coming soon) or via issue; open a draft PR with the RFC</LI>
               <LI>Maintainer sign-off + a comment window before merge</LI>
             </UL>
-            <H3>Code style</H3>
+            <H3>Porting a tool</H3>
             <UL>
-              <LI><Code>cargo clippy -- -D warnings</Code> is mandatory</LI>
-              <LI><Code>cargo fmt --check</Code> is mandatory</LI>
-              <LI>No <Code>unsafe</Code> without a <Code>// SAFETY:</Code> comment</LI>
+              <LI>Keep the upstream clone URL unchanged — the rename is a codename, never a fork</LI>
+              <LI>Default to the TTY path: headless flags, console TUIs, no GUI dependency in the package</LI>
+              <LI>Prefer Python or Shell over adding a new runtime; a new toolchain needs a reason</LI>
               <LI>Anything that can take a live action gets a test that proves it cannot without approval</LI>
             </UL>
-            {/* TODO: link the public Kerox repo here once it exists — do not invent a URL */}
+            {/* TODO: link the public KeroxOS repo here once it exists — do not invent a URL */}
           </Chapter>
 
           <Chapter num="14" id="glossary" title="Glossary">
             <UL>
-              <LI><Code>orchestrator</Code> — the component that reads the plan, sequences the attack chain, and owns the human gate.</LI>
-              <LI><Code>agent</Code> — a specialist that runs one domain of the work (spearhead, network, report; web and appsec later).</LI>
-              <LI><Code>attack chain</Code> — an ordered sequence of techniques that move from entry toward an objective.</LI>
-              <LI><Code>RoE</Code> — Rules of Engagement. What is in scope, what is off-limits, when, and the hard stops.</LI>
-              <LI><Code>ConOps</Code> — Concept of Operations. What the engagement is trying to do, in plain language.</LI>
-              <LI><Code>deconfliction</Code> — telling authorized test activity apart from a real incident.</LI>
-              <LI><Code>OPPLAN</Code> — the operational plan, with each intended action mapped to MITRE ATT&amp;CK.</LI>
-              <LI><Code>dry-run</Code> — plan and display an action without executing it. The default mode.</LI>
-              <LI><Code>MITRE ATT&amp;CK</Code> — the framework of adversary techniques used to tag the conventional chain.</LI>
-              <LI><Code>MITRE ATLAS</Code> — the same idea for attacks against AI/ML systems; Spearhead maps to it.</LI>
-              <LI><Code>OWASP LLM Top 10</Code> — the common catalog of LLM application risks Spearhead reports against.</LI>
+              <LI><Code>KeroxOS</Code> — the TTY-only, x86_64 console Linux distribution this book describes.</LI>
+              <LI><Code>krx</Code> — the Kerox package manager; resolves codenames, builds the arsenal from source. The heart of the OS.</LI>
+              <LI><Code>codename</Code> — a Kerox name for an upstream tool (e.g. <Code>Cartograph</Code> = nmap). A brand, not a fork; the clone URL is unchanged.</LI>
+              <LI><Code>TTY-only</Code> — no display server or GUI in the base; everything runs in a console.</LI>
+              <LI><Code>arsenal</Code> — the curated set of ~150 red-team tools KeroxOS ships, across 14 phases.</LI>
+              <LI><Code>phase / level</Code> — a band of the arsenal (L1–L14), ordered by learning curve from warm-up utilities to binary work.</LI>
+              <LI><Code>AI track</Code> — the parallel AI/LLM-security toolset (AI-1 to AI-4) that Spearhead drives.</LI>
+              <LI><Code>spearhead</Code> — the LLM/AI red-team agent; maps findings to OWASP LLM Top 10 and MITRE ATLAS.</LI>
+              <LI><Code>orchestrator</Code> — the optional autonomous layer that sequences an attack chain and owns the human gate.</LI>
+              <LI><Code>RoE / ConOps / OPPLAN</Code> — the engagement package: scope and rules, the concept of operations, and the ATT&amp;CK-mapped plan.</LI>
+              <LI><Code>dry-run</Code> — plan and display an action without executing it. The default for the automation layer.</LI>
+              <LI><Code>MITRE ATT&amp;CK / ATLAS</Code> — the technique frameworks used to tag the conventional chain and the AI work, respectively.</LI>
             </UL>
           </Chapter>
 
@@ -662,8 +661,8 @@ $ krx run --execute --step 03         # fire only what was approved
               That is the whole book — for now.
             </p>
             <p className="mt-4 max-w-[60ch] text-[13px] leading-[1.8] text-[var(--text-dim)]">
-              The rest is being written as we build. Subscribe to the forum
-              when it opens, follow the org, or just check back. Notes that
+              The rest is being written as we build KeroxOS. Subscribe to the
+              forum when it opens, follow the org, or just check back. Notes that
               sharpen something here are welcome — this book is in the repo too.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3 text-[10px] tracking-[0.3em] text-[var(--text-dim)]">
